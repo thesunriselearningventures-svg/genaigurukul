@@ -1,1 +1,1 @@
-# genaigurukul
+# genaiguru

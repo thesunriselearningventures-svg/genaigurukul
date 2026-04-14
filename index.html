@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenAIGuru - Master Data Science & Generative AI</title>
+    <meta name="description" content="Job-focused learning in Data Science, GenAI, and real-world AI applications for working professionals.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #1a1a2e;
+            --accent: #4a5fc1;
+            --accent-light: #6c7fd8;
+            --text-dark: #2c2c2c;
+            --text-light: #666;
+            --bg-light: #f8f9ff;
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(to bottom, #ffffff 0%, #f8f9ff 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #eee;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 120px 0 100px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.15) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            font-size: 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* What We Teach */
+        .teach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .teach-card {
+            background: var(--white);
+            padding: 40px 32px;
+            border-radius: 12px;
+            border: 1px solid #e8e8e8;
+            transition: all 0.3s;
+        }
+
+        .teach-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+        }
+
+        .teach-card-icon {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .teach-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+
+        .teach-card p {
+            color: var(--text-light);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Why Section */
+        .why-section {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .why-item {
+            text-align: center;
+        }
+
+        .why-item h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+
+        .why-item p {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        /* Programs */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .program-card {
+            background: var(--white);
+            padding: 40px 32px;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            background-image: linear-gradient(white, white), var(--bg-gradient);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .program-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(102, 126, 234, 0.2);
+        }
+
+        .program-card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 16px;
+        }
+
+        .program-card p {
+            color: var(--text-light);
+            font-size: 15px;
+            margin-bottom: 24px;
+            min-height: 60px;
+        }
+
+        .program-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Instructor Section */
+        .instructor-section {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+        }
+
+        .instructor-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .instructor-content p {
+            font-size: 18px;
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .credentials {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .credential {
+            text-align: center;
+        }
+
+        .credential-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .credential-label {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 100px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-10%, -10%) scale(1.1); }
+        }
+
+        .cta-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-size: 44px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .contact-info {
+            color: rgba(255,255,255,0.7);
+            font-size: 15px;
+        }
+
+        .contact-info a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            color: var(--white);
+        }
+
+        .newsletter {
+            margin-top: 20px;
+        }
+
+        .newsletter input {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .newsletter input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .newsletter button {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--white);
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .newsletter button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255,255,255,0.2);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .teach-grid,
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">GenAIGuru</div>
+            <ul class="nav-links">
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#why">Why Us</a></li>
+                <li><a href="#instructor">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Master Data Science & Generative AI<br>The Practical Way</h1>
+            <p>Job-focused learning in Data Science, GenAI, and real-world AI applications for working professionals.</p>
+            <div class="cta-buttons">
+                <a href="#programs" class="btn btn-primary">Explore Programs</a>
+                <a href="#contact" class="btn btn-secondary">Join Free Community</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Teach -->
+    <section id="teach">
+        <div class="container">
+            <h2 class="section-title">What We Teach</h2>
+            <p class="section-subtitle">Practical skills that matter in the real world</p>
+            
+            <div class="teach-grid">
+                <div class="teach-card fade-in">
+                    <div class="teach-card-icon">📊</div>
+                    <h3>Data Science Foundations</h3>
+                    <p>Core statistical concepts, exploratory analysis, and data-driven decision making from the ground up.</p>
+                </div>
+                
+                <div class="teach-card fade-in">
+                    <div class="teach-card-icon">🤖</div>
+                    <h3>Machine Learning & Model Building</h3>
+                    <p>Supervised and unsupervised learning, feature engineering, and production-grade model development.</p>
+                </div>
+                
+                <div class="teach-card fade-in">
+                    <div class="teach-card-icon">✨</div>
+                    <h3>Generative AI (LLMs, Prompting, RAG)</h3>
+                    <p>Working with large language models, prompt engineering, and retrieval-augmented generation systems.</p>
+                </div>
+                
+                <div class="teach-card fade-in">
+                    <div class="teach-card-icon">💻</div>
+                    <h3>Python, SQL & Analytics</h3>
+                    <p>Programming fundamentals, data manipulation, database querying, and analytics workflows.</p>
+                </div>
+                
+                <div class="teach-card fade-in">
+                    <div class="teach-card-icon">🏗️</div>
+                    <h3>Industry Projects & Case Studies</h3>
+                    <p>Real-world problems from banking, finance, and tech to build portfolio-worthy work.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why GenAIGuru -->
+    <section id="why" class="why-section">
+        <div class="container">
+            <h2 class="section-title">Why GenAIGuru</h2>
+            <p class="section-subtitle">Built for working professionals who want real skills, not certificates</p>
+            
+            <div class="why-grid">
+                <div class="why-item">
+                    <h3>Practical, Industry-Relevant</h3>
+                    <p>Curriculum designed from years of building ML systems in production environments.</p>
+                </div>
+                
+                <div class="why-item">
+                    <h3>Working Professional Insight</h3>
+                    <p>Taught by someone actively working in AI and banking, not just teaching theory.</p>
+                </div>
+                
+                <div class="why-item">
+                    <h3>Think, Not Just Tools</h3>
+                    <p>Learn to solve problems and design systems, not memorize libraries and frameworks.</p>
+                </div>
+                
+                <div class="why-item">
+                    <h3>Clear Learning Paths</h3>
+                    <p>Structured progression from beginner to advanced, no confusion or overwhelm.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs -->
+    <section id="programs">
+        <div class="container">
+            <h2 class="section-title">Programs</h2>
+            <p class="section-subtitle">Focused learning paths designed for career outcomes</p>
+            
+            <div class="programs-grid">
+                <div class="program-card">
+                    <h3>Data Science Bootcamp</h3>
+                    <p>Complete foundation to job-ready skills in data science, ML, and analytics.</p>
+                    <span class="program-badge">Coming Soon</span>
+                </div>
+                
+                <div class="program-card">
+                    <h3>Generative AI & LLMs Program</h3>
+                    <p>Deep dive into LLMs, prompt engineering, RAG systems, and GenAI applications.</p>
+                    <span class="program-badge">Coming Soon</span>
+                </div>
+                
+                <div class="program-card">
+                    <h3>Credit Risk & Analytics</h3>
+                    <p>Advanced program focused on risk modeling and analytics in financial services.</p>
+                    <span class="program-badge">Coming Soon</span>
+                </div>
+                
+                <div class="program-card">
+                    <h3>Free Workshops & Live Sessions</h3>
+                    <p>Regular community sessions on trending topics, case studies, and Q&A.</p>
+                    <span class="program-badge">Notify Me</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor -->
+    <section id="instructor" class="instructor-section">
+        <div class="container">
+            <h2 class="section-title">About the Instructor</h2>
+            
+            <div class="instructor-content">
+                <p>GenAIGuru is led by a senior AI professional with over a decade of experience building production machine learning and generative AI systems in banking and financial services.</p>
+                
+                <p>With deep expertise in deploying ML models at scale, designing NLP and LLM-based systems, and mentoring hundreds of professionals through career transitions, the focus here is on teaching what actually works in real organizations.</p>
+                
+                <p>This isn't about hype or trends. It's about building skills that create genuine career value.</p>
+                
+                <div class="credentials">
+                    <div class="credential">
+                        <div class="credential-number">10+</div>
+                        <div class="credential-label">Years in Industry</div>
+                    </div>
+                    <div class="credential">
+                        <div class="credential-number">2000+</div>
+                        <div class="credential-label">Hours Teaching</div>
+                    </div>
+                    <div class="credential">
+                        <div class="credential-number">500+</div>
+                        <div class="credential-label">Professionals Mentored</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Learn Skills That Actually Matter</h2>
+            <p>Join a community of serious learners building real AI capabilities</p>
+            <a href="#contact" class="btn btn-primary" style="background: white; color: var(--primary-dark);">Join the GenAIGuru Journey</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>GenAIGuru</h3>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 15px; line-height: 1.6;">
+                        Practical AI education for working professionals who want real skills and career outcomes.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#programs">Programs</a></li>
+                        <li><a href="#why">Why Us</a></li>
+                        <li><a href="#instructor">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <div class="contact-info">
+                        <p>Email: <a href="mailto:genaiguru01@gmail.com">genaiguru01@gmail.com</a></p>
+                        <p>Phone: <a href="tel:+919354661288">+91 93546 61288</a></p>
+                        <p style="margin-top: 16px; line-height: 1.6;">
+                            SAMARTH BLDG, A 103,<br>
+                            opp. Gundecha Trillium, Kandivali,<br>
+                            Chikhal Wadi, Thakur Village,<br>
+                            Kandivali East, Mumbai,<br>
+                            Maharashtra 400101
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Stay Updated</h3>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Your email address" id="emailInput">
+                        <button onclick="subscribeEmail()">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 GenAIGuru. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Newsletter subscription
+        function subscribeEmail() {
+            const email = document.getElementById('emailInput').value;
+            if (email && email.includes('@')) {
+                alert('Thank you for subscribing! We\'ll keep you updated on new programs and workshops.');
+                document.getElementById('emailInput').value = '';
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
