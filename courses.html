@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+.hero h1{font-size:58px;font-family:'Syne',sans-serif;margin-bottom:18px}
+.hero p{max-width:700px;color:rgba(255,255,255,.75);font-size:18px}
+.section{padding:90px 0}
+.track-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.track{padding:34px;border:1px solid #e5e7eb;border-radius:20px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.05)}
+.track h3{font-family:'Syne',sans-serif;color:#0d1b3e;font-size:28px}
+.track ul{padding-left:18px;color:#4b5563}
+.course-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:50px}
+.course{padding:32px;border-radius:18px;background:#f8faff;border:1px solid #e5e7eb}
+.course h4{font-size:24px;font-family:'Syne',sans-serif;color:#0d1b3e}
+.badge{display:inline-block;background:#dbeafe;color:#2563eb;padding:6px 12px;border-radius:999px;font-size:13px;font-weight:700;margin-bottom:18px}
+.build-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px}
+.build{padding:24px;border-radius:16px;background:#fff;border:1px solid #e5e7eb;text-align:center}
+.faq{margin-top:50px}
+.faq-item{padding:24px;border-bottom:1px solid #e5e7eb}
+footer{background:#0d1b3e;color:#fff;padding:50px 0;margin-top:80px}
+.sticky{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e5e7eb;padding:12px;display:flex;gap:10px}
+.sticky a{flex:1;text-align:center;padding:14px;border-radius:10px;text-decoration:none;font-weight:600}
+.call{background:#0d1b3e;color:#fff}
+.wa{background:#25d366;color:#fff}
+@media(max-width:768px){
+.track-grid,.course-grid,.build-grid{grid-template-columns:1fr}
+.hero h1{font-size:40px}
+.nav-links{display:none}
+body{padding-bottom:80px}
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+<div class="container nav-inner">
+<img src="brand_logo.png" height="42">
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="why-us.html">Why Us</a></li>
+<li><a href="courses.html" class="active">Courses</a></li>
+<li><a href="classroom.html">Classroom</a></li>
+</ul>
+</div>
+</nav>
+
+<section class="hero">
+<div class="container">
+<h1>Courses & Learning Tracks</h1>
+<p>Choose structured learning paths designed for practical skills, portfolio building, and long-term career growth.</p>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<div class="track-grid">
+<div class="track">
+<h3>Data Analytics</h3>
+<ul>
+<li>Excel</li>
+<li>SQL</li>
+<li>Power BI</li>
+<li>Tableau</li>
+</ul>
+</div>
+<div class="track">
+<h3>Data Science</h3>
+<ul>
+<li>Python</li>
+<li>Machine Learning</li>
+<li>Statistics</li>
+<li>Projects</li>
+</ul>
+</div>
+<div class="track">
+<h3>Generative AI</h3>
+<ul>
+<li>Prompt Engineering</li>
+<li>AI Apps</li>
+<li>LLMs</li>
