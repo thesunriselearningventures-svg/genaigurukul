@@ -1,77 +1,555 @@
 <!DOCTYPE html>
-.hero h1{font-size:58px;font-family:'Syne',sans-serif;margin-bottom:18px}
-.hero p{max-width:700px;color:rgba(255,255,255,.75);font-size:18px}
-.section{padding:90px 0}
-.track-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.track{padding:34px;border:1px solid #e5e7eb;border-radius:20px;background:#fff;box-shadow:0 10px 30px rgba(0,0,0,.05)}
-.track h3{font-family:'Syne',sans-serif;color:#0d1b3e;font-size:28px}
-.track ul{padding-left:18px;color:#4b5563}
-.course-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:50px}
-.course{padding:32px;border-radius:18px;background:#f8faff;border:1px solid #e5e7eb}
-.course h4{font-size:24px;font-family:'Syne',sans-serif;color:#0d1b3e}
-.badge{display:inline-block;background:#dbeafe;color:#2563eb;padding:6px 12px;border-radius:999px;font-size:13px;font-weight:700;margin-bottom:18px}
-.build-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px}
-.build{padding:24px;border-radius:16px;background:#fff;border:1px solid #e5e7eb;text-align:center}
-.faq{margin-top:50px}
-.faq-item{padding:24px;border-bottom:1px solid #e5e7eb}
-footer{background:#0d1b3e;color:#fff;padding:50px 0;margin-top:80px}
-.sticky{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e5e7eb;padding:12px;display:flex;gap:10px}
-.sticky a{flex:1;text-align:center;padding:14px;border-radius:10px;text-decoration:none;font-weight:600}
-.call{background:#0d1b3e;color:#fff}
-.wa{background:#25d366;color:#fff}
-@media(max-width:768px){
-.track-grid,.course-grid,.build-grid{grid-template-columns:1fr}
-.hero h1{font-size:40px}
-.nav-links{display:none}
-body{padding-bottom:80px}
-}
-</style>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Courses & Learning Tracks — GenAI Gurukul</title>
+  <meta name="description" content="Explore all 8 courses and 3 learning tracks at GenAI Gurukul — Data Analytics, Data Science, and Generative AI. Offline classroom in Mumbai."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--navy:#0d1b3e;--navy-mid:#1a2f5e;--accent:#2563eb;--accent-soft:#dbeafe;--accent-dark:#1d4ed8;--purple:#6d28d9;--purple-soft:#ede9fe;--teal:#0f766e;--teal-soft:#ccfbf1;--gold:#f59e0b;--white:#fff;--off-white:#f8faff;--gray-100:#f3f4f6;--gray-200:#e5e7eb;--gray-400:#9ca3af;--gray-600:#4b5563;--text:#111827;--radius:14px;--shadow-sm:0 1px 3px rgba(0,0,0,.06);--shadow-md:0 4px 16px rgba(0,0,0,.08);--shadow-lg:0 12px 40px rgba(0,0,0,.1);--fh:'Syne',sans-serif;--fb:'DM Sans',sans-serif;--tr:.25s cubic-bezier(.4,0,.2,1)}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--fb);color:var(--text);background:var(--white);line-height:1.65;overflow-x:hidden}
+    img{max-width:100%;display:block}a{text-decoration:none;color:inherit}
+    .container{max-width:1160px;margin:0 auto;padding:0 24px}
+    .fade-up{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+    .fade-up.visible{opacity:1;transform:translateY(0)}
+
+    /* NAVBAR */
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(255,255,255,.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--gray-200);transition:box-shadow var(--tr)}
+    .navbar.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.08)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;padding:0 24px;max-width:1160px;margin:0 auto}
+    .nav-logo img{height:42px;width:auto}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{font-size:14.5px;font-weight:500;color:var(--gray-600);transition:color var(--tr)}
+    .nav-links a:hover,.nav-links a.active{color:var(--accent)}
+    .nav-cta{display:flex;gap:10px}
+    .btn{display:inline-flex;align-items:center;gap:7px;padding:11px 22px;border-radius:8px;font-family:var(--fb);font-size:14.5px;font-weight:600;cursor:pointer;border:none;transition:all var(--tr);white-space:nowrap}
+    .btn-primary{background:var(--navy);color:var(--white)}.btn-primary:hover{background:var(--navy-mid);transform:translateY(-1px);box-shadow:0 4px 14px rgba(13,27,62,.22)}
+    .btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:var(--white)}
+    .btn-accent{background:var(--accent);color:var(--white);font-size:15px;padding:13px 28px}.btn-accent:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,.3)}
+    .btn-wa{background:#25d366;color:var(--white);font-size:15px;padding:13px 28px}.btn-wa:hover{background:#1ebe5c;transform:translateY(-2px)}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px}
+    .mobile-nav{display:none;flex-direction:column;background:var(--white);border-top:1px solid var(--gray-200);padding:16px 24px 24px;gap:4px}
+    .mobile-nav.open{display:flex}
+    .mobile-nav a{padding:12px 0;font-size:15px;font-weight:500;color:#1f2937;border-bottom:1px solid var(--gray-100)}
+    .mob-cta{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+    .mob-cta .btn{justify-content:center;font-size:15px;padding:13px}
+
+    /* PAGE HERO */
+    .page-hero{padding:140px 0 80px;background:linear-gradient(135deg,#1e1b4b 0%,#5b21b6 100%);position:relative;overflow:hidden}
+    .page-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.06) 1px,transparent 1px);background-size:32px 32px}
+    .page-hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:60px;background:var(--white);clip-path:ellipse(55% 100% at 50% 100%)}
+    .page-hero .container{position:relative;z-index:1;text-align:center}
+    .ph-breadcrumb{display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;color:rgba(255,255,255,.5);margin-bottom:20px}
+    .ph-breadcrumb a{color:rgba(255,255,255,.5);transition:color var(--tr)}.ph-breadcrumb a:hover{color:rgba(255,255,255,.9)}
+    .ph-breadcrumb span{color:rgba(255,255,255,.3)}
+    .ph-title{font-family:var(--fh);font-size:clamp(36px,5vw,60px);font-weight:800;color:var(--white);letter-spacing:-.025em;line-height:1.1;margin-bottom:20px}
+    .ph-title em{color:var(--gold);font-style:normal}
+    .ph-sub{font-size:18px;color:rgba(255,255,255,.7);max-width:600px;margin:0 auto;line-height:1.7}
+    .ph-pills{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .ph-pill{background:rgba(255,255,255,.12);color:rgba(255,255,255,.85);font-size:13px;font-weight:600;padding:6px 16px;border-radius:100px;border:1px solid rgba(255,255,255,.2)}
+
+    /* SHARED */
+    section{padding:80px 0}
+    .sl{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+    .st{font-family:var(--fh);font-size:clamp(26px,3.2vw,40px);font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1.18;margin-bottom:14px}
+    .ss{font-size:17px;color:var(--gray-600);line-height:1.7;max-width:560px}
+    .sh{margin-bottom:48px}.sh.c{text-align:center}.sh.c .ss{margin:0 auto}
+
+    /* TRACK TABS */
+    .track-tabs{display:flex;gap:12px;margin-bottom:40px;flex-wrap:wrap}
+    .track-tab{padding:10px 22px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;border:1.5px solid var(--gray-200);color:var(--gray-600);background:var(--white);transition:all var(--tr)}
+    .track-tab:hover{border-color:var(--accent);color:var(--accent)}
+    .track-tab.active-blue{background:var(--navy);color:var(--white);border-color:var(--navy)}
+    .track-tab.active-purple{background:var(--purple);color:var(--white);border-color:var(--purple)}
+    .track-tab.active-teal{background:var(--teal);color:var(--white);border-color:var(--teal)}
+
+    /* TRACK PANELS */
+    .track-panel{display:none}
+    .track-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+
+    .track-info{}
+    .track-badge-lg{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:16px}
+    .track-badge-lg.blue{background:var(--accent-soft);color:var(--accent)}
+    .track-badge-lg.purple{background:var(--purple-soft);color:var(--purple)}
+    .track-badge-lg.teal{background:var(--teal-soft);color:var(--teal)}
+    .track-info h2{font-family:var(--fh);font-size:clamp(28px,3vw,38px);font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1.15;margin-bottom:16px}
+    .track-info p{font-size:16px;color:var(--gray-600);line-height:1.75;margin-bottom:28px}
+    .track-outcomes{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+    .track-outcome{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;color:var(--gray-600)}
+    .to-dot{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:11px;font-weight:700}
+    .to-dot.blue{background:var(--accent-soft);color:var(--accent)}
+    .to-dot.purple{background:var(--purple-soft);color:var(--purple)}
+    .to-dot.teal{background:var(--teal-soft);color:var(--teal)}
+    .track-meta{display:flex;gap:16px;flex-wrap:wrap}
+    .tmeta{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--gray-600);background:var(--gray-100);padding:6px 12px;border-radius:6px;font-weight:500}
+
+    .track-modules-wrap{}
+    .track-modules-wrap h4{font-family:var(--fh);font-size:15px;font-weight:700;color:var(--navy);margin-bottom:16px}
+    .module-cards{display:flex;flex-direction:column;gap:12px}
+    .module-card{background:var(--white);border:1px solid var(--gray-200);border-radius:10px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;transition:box-shadow var(--tr),border-color var(--tr)}
+    .module-card:hover{box-shadow:var(--shadow-md)}
+    .module-card.blue:hover{border-color:var(--accent)}
+    .module-card.purple:hover{border-color:var(--purple)}
+    .module-card.teal:hover{border-color:var(--teal)}
+    .mc-num{font-family:var(--fh);font-size:22px;font-weight:800;color:var(--gray-200);flex-shrink:0;line-height:1;margin-top:2px}
+    .mc-body{}
+    .mc-body strong{display:block;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px}
+    .mc-body span{font-size:13px;color:var(--gray-600);line-height:1.5}
+    .mc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .mc-tag{font-size:11px;font-weight:600;padding:2px 8px;border-radius:4px}
+    .mc-tag.blue{background:var(--accent-soft);color:var(--accent)}
+    .mc-tag.purple{background:var(--purple-soft);color:var(--purple)}
+    .mc-tag.teal{background:var(--teal-soft);color:var(--teal)}
+
+    /* INDIVIDUAL COURSES GRID */
+    .ind-section{background:var(--off-white)}
+    .courses-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .course-card{background:var(--white);border-radius:var(--radius);padding:28px 22px;border:1px solid var(--gray-200);transition:transform var(--tr),box-shadow var(--tr),border-color var(--tr);position:relative;overflow:hidden}
+    .course-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;opacity:0;transition:opacity var(--tr)}
+    .course-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}.course-card:hover::after{opacity:1}
+    .course-card.c-blue::after{background:var(--accent)}.course-card.c-blue:hover{border-color:var(--accent)}
+    .course-card.c-purple::after{background:var(--purple)}.course-card.c-purple:hover{border-color:var(--purple)}
+    .course-card.c-teal::after{background:var(--teal)}.course-card.c-teal:hover{border-color:var(--teal)}
+    .course-card.c-gold::after{background:var(--gold)}.course-card.c-gold:hover{border-color:var(--gold)}
+    .cc-icon{font-size:36px;margin-bottom:14px}
+    .cc-name{font-family:var(--fh);font-size:17px;font-weight:700;color:var(--navy);margin-bottom:8px}
+    .cc-desc{font-size:13.5px;color:var(--gray-600);line-height:1.6;margin-bottom:14px}
+    .cc-pills{display:flex;flex-wrap:wrap;gap:6px}
+    .cc-pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:4px}
+    .cc-pill.blue{background:var(--accent-soft);color:var(--accent)}
+    .cc-pill.purple{background:var(--purple-soft);color:var(--purple)}
+    .cc-pill.teal{background:var(--teal-soft);color:var(--teal)}
+    .cc-pill.gold{background:#fef3c7;color:#92400e}
+    .cc-price{display:flex;align-items:baseline;gap:4px;margin-top:14px;padding-top:14px;border-top:1px solid var(--gray-100)}
+    .cc-price strong{font-family:var(--fh);font-size:20px;font-weight:800;color:var(--navy)}
+    .cc-price span{font-size:12px;color:var(--gray-400)}
+
+    /* PRICING */
+    .pricing-section{background:var(--navy)}
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .pricing-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:36px 28px;position:relative;transition:transform var(--tr),background var(--tr)}
+    .pricing-card:hover{background:rgba(255,255,255,.08);transform:translateY(-4px)}
+    .pricing-card.featured{background:var(--accent);border-color:var(--accent);transform:scale(1.03)}
+    .pricing-card.featured:hover{transform:scale(1.03) translateY(-4px)}
+    .pricing-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:#7c2d12;font-size:11px;font-weight:700;padding:4px 14px;border-radius:100px;white-space:nowrap;letter-spacing:.05em}
+    .pricing-name{font-family:var(--fh);font-size:14px;font-weight:700;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+    .pricing-price{font-family:var(--fh);font-size:48px;font-weight:800;color:var(--white);line-height:1;margin-bottom:4px}
+    .pricing-price sup{font-size:24px;vertical-align:super}
+    .pricing-price sub{font-size:14px;color:rgba(255,255,255,.6)}
+    .pricing-desc{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:24px;line-height:1.6}
+    .pricing-features{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+    .pf{display:flex;align-items:center;gap:8px;font-size:14px;color:rgba(255,255,255,.8)}
+    .pf::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0}
+    .pricing-card .btn{width:100%;justify-content:center;font-size:14.5px;padding:13px}
+    .btn-pricing-main{background:var(--white);color:var(--accent);font-weight:700}
+    .btn-pricing-main:hover{background:var(--off-white);transform:translateY(-1px)}
+    .btn-pricing-outline{background:transparent;color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.3)}
+    .btn-pricing-outline:hover{background:rgba(255,255,255,.1)}
+
+    /* FAQ */
+    .faq-section{background:var(--off-white)}
+    .faq-list{display:flex;flex-direction:column;gap:12px;max-width:800px;margin:0 auto}
+    .faq-item{background:var(--white);border:1px solid var(--gray-200);border-radius:10px;overflow:hidden}
+    .faq-q{padding:20px 24px;font-size:15.5px;font-weight:600;color:var(--navy);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;user-select:none;transition:background var(--tr)}
+    .faq-q:hover{background:var(--off-white)}
+    .faq-icon{font-size:18px;color:var(--accent);flex-shrink:0;transition:transform var(--tr)}
+    .faq-item.open .faq-icon{transform:rotate(45deg)}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding var(--tr)}
+    .faq-item.open .faq-a{max-height:300px}
+    .faq-a-inner{padding:0 24px 20px;font-size:14.5px;color:var(--gray-600);line-height:1.75}
+
+    /* CTA BAND */
+    .cta-band{background:linear-gradient(135deg,var(--accent),var(--purple));padding:72px 0;text-align:center}
+    .cta-band h2{font-family:var(--fh);font-size:clamp(28px,3.5vw,42px);font-weight:800;color:var(--white);margin-bottom:16px;letter-spacing:-.02em}
+    .cta-band p{font-size:17px;color:rgba(255,255,255,.8);margin-bottom:36px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7}
+    .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .btn-white{background:var(--white);color:var(--accent);font-size:15px;padding:14px 32px;font-weight:700}.btn-white:hover{background:var(--off-white);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.15)}
+    .btn-ghost{background:rgba(255,255,255,.15);color:var(--white);border:1.5px solid rgba(255,255,255,.4);font-size:15px;padding:13px 32px}.btn-ghost:hover{background:rgba(255,255,255,.25)}
+
+    /* FOOTER */
+    footer{background:var(--navy);color:rgba(255,255,255,.75);padding:64px 0 0}
+    .fg{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .fb img{height:42px;margin-bottom:16px;filter:brightness(0) invert(1)}
+    .fb p{font-size:14px;line-height:1.7;max-width:300px}
+    .fc h4{font-family:var(--fh);font-size:15px;font-weight:700;color:var(--white);margin-bottom:16px}
+    .fl{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .fl a{font-size:14px;color:rgba(255,255,255,.6);transition:color var(--tr)}.fl a:hover{color:var(--white)}
+    .fct{display:flex;flex-direction:column;gap:10px}
+    .fct a{font-size:14px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:8px;transition:color var(--tr)}.fct a:hover{color:var(--white)}
+    .fbot{padding:20px 0;display:flex;align-items:center;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.35)}
+    .sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:800;background:var(--white);border-top:1px solid var(--gray-200);padding:12px 16px;gap:10px;box-shadow:0 -4px 20px rgba(0,0,0,.1)}
+    .sticky-cta .btn{flex:1;justify-content:center;font-size:14px;padding:12px}
+
+    @media(max-width:1024px){.courses-grid{grid-template-columns:repeat(2,1fr)}.pricing-grid{grid-template-columns:1fr 1fr}.pricing-card.featured{transform:none}.track-panel.active{grid-template-columns:1fr}}
+    @media(max-width:768px){
+      .nav-links,.nav-cta{display:none}.hamburger{display:flex}
+      .courses-grid{grid-template-columns:1fr 1fr}.pricing-grid{grid-template-columns:1fr}
+      .fg{grid-template-columns:1fr;gap:32px}.fbot{flex-direction:column;gap:8px;text-align:center}
+      .sticky-cta{display:flex}body{padding-bottom:72px}
+    }
+    @media(max-width:480px){.courses-grid{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
 
-<nav class="navbar">
-<div class="container nav-inner">
-<img src="brand_logo.png" height="42">
-<ul class="nav-links">
-<li><a href="index.html">Home</a></li>
-<li><a href="why-us.html">Why Us</a></li>
-<li><a href="courses.html" class="active">Courses</a></li>
-<li><a href="classroom.html">Classroom</a></li>
-</ul>
-</div>
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="brand_logo.png" alt="GenAI Gurukul"/></a>
+    <ul class="nav-links">
+      <li><a href="why-us.html">Why Us</a></li>
+      <li><a href="courses.html" class="active">Courses</a></li>
+      <li><a href="classroom.html">Classroom</a></li>
+      <li><a href="index.html#roadmap">Roadmap</a></li>
+      <li><a href="index.html#location">Location</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:9354661288" class="btn btn-outline">📞 Call Now</a>
+      <a href="https://wa.me/919354661288" target="_blank" class="btn btn-primary">Book Demo</a>
+    </div>
+    <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+  </div>
+  <div class="mobile-nav" id="mnav">
+    <a href="why-us.html">Why Us</a><a href="courses.html">Courses</a><a href="classroom.html">Classroom</a><a href="index.html#roadmap">Roadmap</a><a href="index.html#location">Location</a>
+    <div class="mob-cta">
+      <a href="tel:9354661288" class="btn btn-outline">📞 Call: 9354661288</a>
+      <a href="https://wa.me/919354661288" target="_blank" class="btn btn-wa">💬 WhatsApp</a>
+    </div>
+  </div>
 </nav>
 
-<section class="hero">
-<div class="container">
-<h1>Courses & Learning Tracks</h1>
-<p>Choose structured learning paths designed for practical skills, portfolio building, and long-term career growth.</p>
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="ph-breadcrumb"><a href="index.html">Home</a><span>/</span><span style="color:rgba(255,255,255,.8)">Courses</span></div>
+    <h1 class="ph-title">Courses &<br/><em>Learning Tracks</em></h1>
+    <p class="ph-sub">3 structured learning tracks and 8 individual courses — all taught offline, all focused on practical, job-ready skills.</p>
+    <div class="ph-pills">
+      <span class="ph-pill">🧑‍💻 Offline Classroom</span>
+      <span class="ph-pill">📊 Real Projects</span>
+      <span class="ph-pill">🎓 Certificate</span>
+      <span class="ph-pill">💼 Career Assistance</span>
+      <span class="ph-pill">₹999 Onwards</span>
+    </div>
+  </div>
 </div>
+
+<!-- LEARNING TRACKS -->
+<section id="tracks">
+  <div class="container">
+    <div class="sh fade-up">
+      <div class="sl">Learning Tracks</div>
+      <h2 class="st">Structured Paths for Career Outcomes</h2>
+      <p class="ss">Pick a track based on your goal. Each track is a curated sequence of modules that builds toward a specific role.</p>
+    </div>
+
+    <div class="track-tabs fade-up">
+      <button class="track-tab active-blue" onclick="showTrack('blue',this)">📊 Data Analytics Track</button>
+      <button class="track-tab" onclick="showTrack('purple',this)">🐍 Data Science Track</button>
+      <button class="track-tab" onclick="showTrack('teal',this)">🤖 Generative AI Track</button>
+    </div>
+
+    <!-- TRACK: DATA ANALYTICS -->
+    <div class="track-panel active fade-up" id="track-blue">
+      <div class="track-info">
+        <div class="track-badge-lg blue">Track 01</div>
+        <h2>Data Analytics Track</h2>
+        <p>Master the core toolkit every data analyst needs. From Excel fundamentals to interactive Power BI dashboards — you'll be able to extract insights from data and present them clearly to any business audience.</p>
+        <div class="track-outcomes">
+          <div class="track-outcome"><div class="to-dot blue">✓</div><span>Build dashboards in Power BI and Tableau that business stakeholders actually use</span></div>
+          <div class="track-outcome"><div class="to-dot blue">✓</div><span>Write SQL queries to extract, filter and aggregate data from databases</span></div>
+          <div class="track-outcome"><div class="to-dot blue">✓</div><span>Perform data cleaning, pivot analysis and advanced functions in Excel</span></div>
+          <div class="track-outcome"><div class="to-dot blue">✓</div><span>Present data-driven insights to management with confidence</span></div>
+        </div>
+        <div class="track-meta">
+          <div class="tmeta">👤 Beginner Friendly</div>
+          <div class="tmeta">🏛️ Offline Classroom</div>
+          <div class="tmeta">🎓 Certificate Included</div>
+        </div>
+      </div>
+      <div class="track-modules-wrap">
+        <h4>Modules in This Track</h4>
+        <div class="module-cards">
+          <div class="module-card blue"><div class="mc-num">01</div><div class="mc-body"><strong>Excel for Data Analysis</strong><span>Formulas, pivot tables, data cleaning, charts, conditional formatting, VLOOKUP, Power Query</span><div class="mc-tags"><span class="mc-tag blue">Beginner</span><span class="mc-tag blue">Hands-On</span></div></div></div>
+          <div class="module-card blue"><div class="mc-num">02</div><div class="mc-body"><strong>SQL & Database Querying</strong><span>SELECT, JOINs, GROUP BY, subqueries, window functions, real database exercises</span><div class="mc-tags"><span class="mc-tag blue">Intermediate</span><span class="mc-tag blue">Projects</span></div></div></div>
+          <div class="module-card blue"><div class="mc-num">03</div><div class="mc-body"><strong>Power BI Dashboards</strong><span>Data modelling, DAX basics, interactive reports, connecting to live data sources</span><div class="mc-tags"><span class="mc-tag blue">Industry Tool</span><span class="mc-tag blue">Portfolio</span></div></div></div>
+          <div class="module-card blue"><div class="mc-num">04</div><div class="mc-body"><strong>Tableau Visualization</strong><span>Charts, story points, calculated fields, published dashboards, storytelling with data</span><div class="mc-tags"><span class="mc-tag blue">Visual Analytics</span><span class="mc-tag blue">Hands-On</span></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRACK: DATA SCIENCE -->
+    <div class="track-panel" id="track-purple">
+      <div class="track-info">
+        <div class="track-badge-lg purple">Track 02</div>
+        <h2>Data Science Track</h2>
+        <p>Go deeper into the data stack. Learn Python programming from scratch, apply machine learning algorithms to real datasets, and understand the infrastructure behind large-scale data. Ideal for those targeting Data Scientist or ML Engineer roles.</p>
+        <div class="track-outcomes">
+          <div class="track-outcome"><div class="to-dot purple">✓</div><span>Write Python code for data manipulation, analysis and visualisation</span></div>
+          <div class="track-outcome"><div class="to-dot purple">✓</div><span>Build, train and evaluate machine learning models on real datasets</span></div>
+          <div class="track-outcome"><div class="to-dot purple">✓</div><span>Understand Big Data fundamentals and when to use them</span></div>
+          <div class="track-outcome"><div class="to-dot purple">✓</div><span>Complete end-to-end ML projects for your portfolio</span></div>
+        </div>
+        <div class="track-meta">
+          <div class="tmeta">📈 Intermediate</div>
+          <div class="tmeta">🏛️ Offline Classroom</div>
+          <div class="tmeta">🎓 Certificate Included</div>
+        </div>
+      </div>
+      <div class="track-modules-wrap">
+        <h4>Modules in This Track</h4>
+        <div class="module-cards">
+          <div class="module-card purple"><div class="mc-num">01</div><div class="mc-body"><strong>Python Programming</strong><span>Variables, loops, functions, OOP, NumPy, Pandas, Matplotlib — everything from scratch</span><div class="mc-tags"><span class="mc-tag purple">Beginner → Advanced</span><span class="mc-tag purple">Hands-On</span></div></div></div>
+          <div class="module-card purple"><div class="mc-num">02</div><div class="mc-body"><strong>Machine Learning</strong><span>Regression, classification, clustering, model evaluation, Scikit-learn, real project builds</span><div class="mc-tags"><span class="mc-tag purple">Core ML</span><span class="mc-tag purple">Projects</span></div></div></div>
+          <div class="module-card purple"><div class="mc-num">03</div><div class="mc-body"><strong>Big Data Fundamentals</strong><span>Hadoop, Spark basics, distributed computing concepts, when and why to use Big Data tools</span><div class="mc-tags"><span class="mc-tag purple">Architecture</span><span class="mc-tag purple">Industry Context</span></div></div></div>
+          <div class="module-card purple"><div class="mc-num">04</div><div class="mc-body"><strong>Capstone Projects</strong><span>2 end-to-end real-world ML projects — data collection to deployed model — for your portfolio</span><div class="mc-tags"><span class="mc-tag purple">Portfolio</span><span class="mc-tag purple">Career-Ready</span></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRACK: GENERATIVE AI -->
+    <div class="track-panel" id="track-teal">
+      <div class="track-info">
+        <div class="track-badge-lg teal">Track 03</div>
+        <h2>Generative AI Track</h2>
+        <p>The most future-proof track we offer. Understand how large language models work, build AI-powered applications, automate workflows with AI agents, and implement RAG systems. For those who want to be ahead of the AI curve professionally.</p>
+        <div class="track-outcomes">
+          <div class="track-outcome"><div class="to-dot teal">✓</div><span>Write effective prompts for LLMs in professional and technical contexts</span></div>
+          <div class="track-outcome"><div class="to-dot teal">✓</div><span>Build RAG (Retrieval Augmented Generation) systems on your own data</span></div>
+          <div class="track-outcome"><div class="to-dot teal">✓</div><span>Develop AI-powered apps and automate workflows end-to-end</span></div>
+          <div class="track-outcome"><div class="to-dot teal">✓</div><span>Understand and use AI agents for real business automation</span></div>
+        </div>
+        <div class="track-meta">
+          <div class="tmeta">🚀 Cutting Edge</div>
+          <div class="tmeta">🏛️ Offline Classroom</div>
+          <div class="tmeta">🎓 Certificate Included</div>
+        </div>
+      </div>
+      <div class="track-modules-wrap">
+        <h4>Modules in This Track</h4>
+        <div class="module-cards">
+          <div class="module-card teal"><div class="mc-num">01</div><div class="mc-body"><strong>Prompt Engineering</strong><span>Zero-shot, few-shot, chain-of-thought, system prompts, prompt templates for real tasks</span><div class="mc-tags"><span class="mc-tag teal">Foundation</span><span class="mc-tag teal">Practical</span></div></div></div>
+          <div class="module-card teal"><div class="mc-num">02</div><div class="mc-body"><strong>RAG Systems</strong><span>Vector databases, embeddings, chunking, retrieval pipelines, building Q&A on your own docs</span><div class="mc-tags"><span class="mc-tag teal">Advanced</span><span class="mc-tag teal">Projects</span></div></div></div>
+          <div class="module-card teal"><div class="mc-num">03</div><div class="mc-body"><strong>AI App Development</strong><span>Build real AI-powered applications using LLM APIs, LangChain, and Streamlit front-ends</span><div class="mc-tags"><span class="mc-tag teal">Build</span><span class="mc-tag teal">Portfolio</span></div></div></div>
+          <div class="module-card teal"><div class="mc-num">04</div><div class="mc-body"><strong>AI Automation</strong><span>Agentic workflows, tool use, multi-step automation, real-world business automation use cases</span><div class="mc-tags"><span class="mc-tag teal">Agents</span><span class="mc-tag teal">Industry</span></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="section">
-<div class="container">
-<div class="track-grid">
-<div class="track">
-<h3>Data Analytics</h3>
-<ul>
-<li>Excel</li>
-<li>SQL</li>
-<li>Power BI</li>
-<li>Tableau</li>
-</ul>
+<!-- INDIVIDUAL COURSES -->
+<section class="ind-section" id="individual">
+  <div class="container">
+    <div class="sh fade-up">
+      <div class="sl">Individual Courses</div>
+      <h2 class="st">Or Pick Exactly What You Need</h2>
+      <p class="ss">Enrol in a single course if you want to upskill in one specific tool. All courses are offline, hands-on, and project-based.</p>
+    </div>
+    <div class="courses-grid">
+      <div class="course-card c-purple fade-up">
+        <div class="cc-icon">🤖</div>
+        <div class="cc-name">Generative AI</div>
+        <div class="cc-desc">Prompting, LLMs, RAG, AI apps and automation. The most in-demand skill of this decade.</div>
+        <div class="cc-pills"><span class="cc-pill purple">Prompt Eng.</span><span class="cc-pill purple">RAG</span><span class="cc-pill purple">AI Apps</span></div>
+        <div class="cc-price"><strong>₹999</strong><span>onwards</span></div>
+      </div>
+      <div class="course-card c-blue fade-up" style="transition-delay:.07s">
+        <div class="cc-icon">📊</div>
+        <div class="cc-name">Data Science</div>
+        <div class="cc-desc">Python + Machine Learning + real projects. Build models and a portfolio from scratch.</div>
+        <div class="cc-pills"><span class="cc-pill blue">Python</span><span class="cc-pill blue">ML</span><span class="cc-pill blue">Projects</span></div>
+        <div class="cc-price"><strong>₹999</strong><span>onwards</span></div>
+      </div>
+      <div class="course-card c-blue fade-up" style="transition-delay:.14s">
+        <div class="cc-icon">🐍</div>
+        <div class="cc-name">Python</div>
+        <div class="cc-desc">Complete Python from scratch — variables to OOP, with Pandas, NumPy and data projects.</div>
+        <div class="cc-pills"><span class="cc-pill blue">Beginner</span><span class="cc-pill blue">Pandas</span><span class="cc-pill blue">NumPy</span></div>
+        <div class="cc-price"><strong>₹999</strong><span>onwards</span></div>
+      </div>
+      <div class="course-card c-blue fade-up" style="transition-delay:.21s">
+        <div class="cc-icon">🗃️</div>
+        <div class="cc-name">SQL</div>
+        <div class="cc-desc">Query databases with confidence. JOINs, aggregations, subqueries — with real database exercises.</div>
+        <div class="cc-pills"><span class="cc-pill blue">Queries</span><span class="cc-pill blue">JOINs</span><span class="cc-pill blue">Analytics</span></div>
+        <div class="cc-price"><strong>₹999</strong><span>onwards</span></div>
+      </div>
+      <div class="course-card c-gold fade-up" style="transition-delay:.28s">
+        <div class="cc-icon">📗</div>
+        <div class="cc-name">Excel</div>
+        <div class="cc-desc">From basics to advanced — pivot tables, VLOOKUP, Power Query, data analysis and charts.</div>
+        <div class="cc-pills"><span class="cc-pill gold">Pivot Tables</span><span class="cc-pill gold">Formulas</span><span class="cc-pill gold">Power Query</span></div>
+        <div class="cc-price"><strong>₹999</strong><span>onwards</span></div>
+      </div>
+      <div class="course-card c-blue fade-up" style="transition-delay:.35s">
+        <div class="cc-icon">📈</div>
+        <div class="cc-name">Power BI</div>
+        <div class="cc-desc">Build business dashboards with DAX, data modelling and live data connections. Highly hireable skill.</div>
+        <div class="cc-pills"><span class="cc-pill blue">DAX</span><span class="cc-pill blue">Dashboards</span><span class="cc-pill blue">Reports</span></div>
+        <div class="cc-price"><strong>₹999</strong><span>onwards</span></div>
+      </div>
+      <div class="course-card c-purple fade-up" style="transition-delay:.42s">
+        <div class="cc-icon">📉</div>
+        <div class="cc-name">Tableau</div>
+        <div class="cc-desc">Visual analytics and storytelling. Build Tableau dashboards that communicate insights clearly.</div>
+        <div class="cc-pills"><span class="cc-pill purple">Charts</span><span class="cc-pill purple">Storypoints</span><span class="cc-pill purple">Visual</span></div>
+        <div class="cc-price"><strong>₹999</strong><span>onwards</span></div>
+      </div>
+      <div class="course-card c-teal fade-up" style="transition-delay:.49s">
+        <div class="cc-icon">🏗️</div>
+        <div class="cc-name">Big Data</div>
+        <div class="cc-desc">Hadoop, Spark fundamentals and distributed computing concepts for working with large-scale data.</div>
+        <div class="cc-pills"><span class="cc-pill teal">Hadoop</span><span class="cc-pill teal">Spark</span><span class="cc-pill teal">Architecture</span></div>
+        <div class="cc-price"><strong>₹999</strong><span>onwards</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section">
+  <div class="container">
+    <div class="sh c fade-up" style="padding-top:8px">
+      <div class="sl" style="color:var(--gold)">Pricing</div>
+      <h2 class="st" style="color:var(--white)">Affordable, Transparent Pricing</h2>
+      <p class="ss" style="color:rgba(255,255,255,.65);margin:0 auto">No hidden fees. No confusing bundles. Call us to get the exact fee for your chosen course or track.</p>
+    </div>
+    <div class="pricing-grid fade-up">
+      <div class="pricing-card">
+        <div class="pricing-name">Individual Course</div>
+        <div class="pricing-price"><sup>₹</sup>999<sub>+</sub></div>
+        <div class="pricing-desc">Pick one skill and master it with hands-on, offline training.</div>
+        <div class="pricing-features">
+          <div class="pf">One course of your choice</div>
+          <div class="pf">Offline classroom sessions</div>
+          <div class="pf">Hands-on practical learning</div>
+          <div class="pf">Certificate of completion</div>
+          <div class="pf">Doubt-solving included</div>
+        </div>
+        <a href="https://wa.me/919354661288" target="_blank" class="btn btn-pricing-outline">💬 Enquire on WhatsApp</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-badge">⭐ MOST POPULAR</div>
+        <div class="pricing-name">Learning Track</div>
+        <div class="pricing-price"><sup>₹</sup>???<sub></sub></div>
+        <div class="pricing-desc">Full structured track — 4 modules, real projects, career-ready output. Call for pricing.</div>
+        <div class="pricing-features">
+          <div class="pf">All 4 modules in chosen track</div>
+          <div class="pf">Real-world project portfolio</div>
+          <div class="pf">Career assistance included</div>
+          <div class="pf">Resume & interview prep</div>
+          <div class="pf">Certificate of completion</div>
+        </div>
+        <a href="tel:9354661288" class="btn btn-pricing-main">📞 Call for Track Pricing</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-name">Custom Bundle</div>
+        <div class="pricing-price"><sup></sup>Talk<sub> to us</sub></div>
+        <div class="pricing-desc">Mix and match courses from different tracks to build the exact skill set you need.</div>
+        <div class="pricing-features">
+          <div class="pf">Any combination of courses</div>
+          <div class="pf">Flexible scheduling</div>
+          <div class="pf">Tailored learning path</div>
+          <div class="pf">Career guidance included</div>
+          <div class="pf">Certificate per course</div>
+        </div>
+        <a href="https://wa.me/919354661288" target="_blank" class="btn btn-pricing-outline">💬 Discuss on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="sh c fade-up">
+      <div class="sl">FAQs</div>
+      <h2 class="st">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list fade-up">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do I need any prior knowledge to join?<span class="faq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">No prior knowledge is required for most courses. Our Excel, SQL, and Python courses start from absolute basics. For the Generative AI track, a basic understanding of Python is helpful but not mandatory — we'll cover what you need.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Are the sessions recorded or live?<span class="faq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">All sessions are live, offline, and in-person at our Kandivali East classroom. This is by design — the real classroom environment leads to better learning, faster doubt resolution, and stronger accountability.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What are the batch timings?<span class="faq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">We offer both weekday batches (morning and evening) and weekend batches to accommodate students and working professionals. Contact us to know the current schedule and available slots.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Will I get a certificate?<span class="faq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Yes. You receive a GenAI Gurukul certificate of completion for every course or track you finish. We also help you build a project portfolio that is far more valuable to employers than any certificate.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How is this better than an online course?<span class="faq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Online courses have completion rates below 5% because there's no accountability, no real doubt-solving, and no personalisation. At GenAI Gurukul you attend a physical classroom, work on real projects with a trainer who knows your name, and get your doubts resolved immediately. See our full comparison on the Why Us page.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do you help with placements?<span class="faq-icon">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">We provide career assistance including resume building, interview preparation, and career guidance. While we don't guarantee placements, our focus on real projects and practical skills significantly improves your chances in the job market.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="container">
+    <h2>Start Your Learning Journey Today</h2>
+    <p>Limited seats per batch. Call or WhatsApp to know available slots and get personalised course guidance.</p>
+    <div class="cta-btns">
+      <a href="tel:9354661288" class="btn btn-white">📞 Call Now: 9354661288</a>
+      <a href="https://wa.me/919354661288" target="_blank" class="btn btn-ghost">💬 WhatsApp for Enquiry</a>
+    </div>
+  </div>
 </div>
-<div class="track">
-<h3>Data Science</h3>
-<ul>
-<li>Python</li>
-<li>Machine Learning</li>
-<li>Statistics</li>
-<li>Projects</li>
-</ul>
+
+<!-- FOOTER -->
+<footer><div class="container">
+  <div class="fg">
+    <div class="fb"><img src="brand_logo.png" alt="GenAI Gurukul"/><p>Practical Data Science & Generative AI training for serious learners. Offline classroom. Real projects. Real skills.</p></div>
+    <div class="fc"><h4>Pages</h4><ul class="fl"><li><a href="why-us.html">Why Choose Us</a></li><li><a href="courses.html">Courses</a></li><li><a href="classroom.html">Classroom</a></li><li><a href="index.html#roadmap">Career Roadmap</a></li><li><a href="index.html#location">Location</a></li></ul></div>
+    <div class="fc"><h4>Contact</h4><div class="fct"><a href="tel:9354661288">📞 9354661288</a><a href="https://wa.me/919354661288" target="_blank">💬 WhatsApp Us</a><a href="mailto:genaigurukul@gmail.com">✉️ genaigurukul@gmail.com</a><a href="https://genaigurukul.in" target="_blank">🌐 genaigurukul.in</a></div></div>
+  </div>
+  <div class="fbot"><span>© 2026 GenAI Gurukul. All rights reserved.</span><span>A 103, Samarth Bldg, Kandivali East, Mumbai 400101</span></div>
+</div></footer>
+
+<div class="sticky-cta">
+  <a href="tel:9354661288" class="btn btn-primary">📞 Call</a>
+  <a href="https://wa.me/919354661288" target="_blank" class="btn btn-wa">💬 WhatsApp</a>
+  <a href="#tracks" class="btn btn-outline">View Tracks</a>
 </div>
-<div class="track">
-<h3>Generative AI</h3>
-<ul>
-<li>Prompt Engineering</li>
-<li>AI Apps</li>
-<li>LLMs</li>
+
+<script>
+  const nb=document.getElementById('navbar');
+  window.addEventListener('scroll',()=>nb.classList.toggle('scrolled',scrollY>20));
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+  function toggleNav(){document.getElementById('mnav').classList.toggle('open')}
+
+  function showTrack(color, btn) {
+    document.querySelectorAll('.track-panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.track-tab').forEach(t=>{t.classList.remove('active-blue','active-purple','active-teal')});
+    document.getElementById('track-'+color).classList.add('active');
+    btn.classList.add('active-'+color);
+  }
+
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen) item.classList.add('open');
+  }
+</script>
+</body>
+</html>
