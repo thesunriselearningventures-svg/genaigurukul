@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Classroom Experience — GenAI Gurukul</title>
+  <meta name="description" content="See the GenAI Gurukul offline classroom in Kandivali East, Mumbai. Real sessions, real students, hands-on practical AI and Data Science training."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--navy:#0d1b3e;--navy-mid:#1a2f5e;--accent:#2563eb;--accent-soft:#dbeafe;--accent-dark:#1d4ed8;--purple:#6d28d9;--teal:#0f766e;--gold:#f59e0b;--white:#fff;--off-white:#f8faff;--gray-100:#f3f4f6;--gray-200:#e5e7eb;--gray-400:#9ca3af;--gray-600:#4b5563;--text:#111827;--radius:14px;--shadow-sm:0 1px 3px rgba(0,0,0,.06);--shadow-md:0 4px 16px rgba(0,0,0,.08);--shadow-lg:0 12px 40px rgba(0,0,0,.1);--fh:'Syne',sans-serif;--fb:'DM Sans',sans-serif;--tr:.25s cubic-bezier(.4,0,.2,1)}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--fb);color:var(--text);background:var(--white);line-height:1.65;overflow-x:hidden}
+    img{max-width:100%;display:block}a{text-decoration:none;color:inherit}
+    .container{max-width:1160px;margin:0 auto;padding:0 24px}
+    .fade-up{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+    .fade-up.visible{opacity:1;transform:translateY(0)}
+
+    /* NAVBAR */
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(255,255,255,.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--gray-200);transition:box-shadow var(--tr)}
+    .navbar.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.08)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;padding:0 24px;max-width:1160px;margin:0 auto}
+    .nav-logo img{height:42px;width:auto}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{font-size:14.5px;font-weight:500;color:var(--gray-600);transition:color var(--tr)}
+    .nav-links a:hover,.nav-links a.active{color:var(--accent)}
+    .nav-cta{display:flex;gap:10px}
+    .btn{display:inline-flex;align-items:center;gap:7px;padding:11px 22px;border-radius:8px;font-family:var(--fb);font-size:14.5px;font-weight:600;cursor:pointer;border:none;transition:all var(--tr);white-space:nowrap}
+    .btn-primary{background:var(--navy);color:var(--white)}.btn-primary:hover{background:var(--navy-mid);transform:translateY(-1px);box-shadow:0 4px 14px rgba(13,27,62,.22)}
+    .btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:var(--white)}
+    .btn-accent{background:var(--accent);color:var(--white);font-size:15px;padding:13px 28px}.btn-accent:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,.3)}
+    .btn-wa{background:#25d366;color:var(--white);font-size:15px;padding:13px 28px}.btn-wa:hover{background:#1ebe5c;transform:translateY(-2px)}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px}
+    .mobile-nav{display:none;flex-direction:column;background:var(--white);border-top:1px solid var(--gray-200);padding:16px 24px 24px;gap:4px}
+    .mobile-nav.open{display:flex}
+    .mobile-nav a{padding:12px 0;font-size:15px;font-weight:500;color:#1f2937;border-bottom:1px solid var(--gray-100)}
+    .mob-cta{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+    .mob-cta .btn{justify-content:center;font-size:15px;padding:13px}
+
+    /* PAGE HERO */
+    .page-hero{padding:140px 0 80px;background:linear-gradient(135deg,#042f2e 0%,#0f766e 100%);position:relative;overflow:hidden}
+    .page-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.06) 1px,transparent 1px);background-size:32px 32px}
+    .page-hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:60px;background:var(--white);clip-path:ellipse(55% 100% at 50% 100%)}
+    .page-hero .container{position:relative;z-index:1;text-align:center}
+    .ph-breadcrumb{display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;color:rgba(255,255,255,.5);margin-bottom:20px}
+    .ph-breadcrumb a{color:rgba(255,255,255,.5);transition:color var(--tr)}.ph-breadcrumb a:hover{color:rgba(255,255,255,.9)}
+    .ph-breadcrumb span{color:rgba(255,255,255,.3)}
+    .ph-title{font-family:var(--fh);font-size:clamp(36px,5vw,60px);font-weight:800;color:var(--white);letter-spacing:-.025em;line-height:1.1;margin-bottom:20px}
+    .ph-title em{color:var(--gold);font-style:normal}
+    .ph-sub{font-size:18px;color:rgba(255,255,255,.7);max-width:600px;margin:0 auto;line-height:1.7}
+
+    /* SHARED */
+    section{padding:80px 0}
+    .sl{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+    .st{font-family:var(--fh);font-size:clamp(26px,3.2vw,40px);font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1.18;margin-bottom:14px}
+    .ss{font-size:17px;color:var(--gray-600);line-height:1.7;max-width:560px}
+    .sh{margin-bottom:48px}.sh.c{text-align:center}.sh.c .ss{margin:0 auto}
+
+    /* PHOTO GALLERY */
+    .gallery-section{background:var(--white)}
+    .gallery-grid{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:280px 280px;gap:16px}
+    .gallery-item{border-radius:var(--radius);overflow:hidden;position:relative;cursor:pointer}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+    .gallery-item:hover img{transform:scale(1.04)}
+    .gallery-item.tall{grid-row:span 2}
+    .gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(13,27,62,.6) 0%,transparent 50%);opacity:0;transition:opacity var(--tr)}
+    .gallery-item:hover .gallery-overlay{opacity:1}
+    .gallery-caption{position:absolute;bottom:16px;left:16px;right:16px;color:var(--white);font-size:14px;font-weight:600;opacity:0;transform:translateY(8px);transition:all var(--tr)}
+    .gallery-item:hover .gallery-caption{opacity:1;transform:translateY(0)}
+
+    /* WHAT HAPPENS INSIDE */
+    .inside-section{background:var(--off-white)}
+    .inside-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+    .inside-steps{display:flex;flex-direction:column;gap:0}
+    .inside-step{display:flex;gap:20px;padding:24px 0;border-bottom:1px solid var(--gray-200);position:relative}
+    .inside-step:last-child{border-bottom:none}
+    .is-num{width:44px;height:44px;border-radius:50%;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:800;font-size:16px;color:var(--accent);flex-shrink:0}
+    .is-body h4{font-family:var(--fh);font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px}
+    .is-body p{font-size:14px;color:var(--gray-600);line-height:1.65}
+    .inside-img-stack{display:flex;flex-direction:column;gap:12px}
+    .inside-img-stack img{width:100%;border-radius:var(--radius);object-fit:cover;height:220px}
+
+    /* CLASSROOM FEATURES */
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .feature-card{background:var(--white);border-radius:var(--radius);padding:28px 24px;border:1px solid var(--gray-200);transition:transform var(--tr),box-shadow var(--tr)}
+    .feature-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+    .fc-icon{font-size:32px;margin-bottom:14px}
+    .feature-card h3{font-family:var(--fh);font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px}
+    .feature-card p{font-size:13.5px;color:var(--gray-600);line-height:1.65}
+
+    /* VS ONLINE */
+    .vs-section{background:var(--navy)}
+    .vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .vs-card{border-radius:var(--radius);padding:36px 32px}
+    .vs-card.us{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
+    .vs-card.them{background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.05)}
+    .vs-card h3{font-family:var(--fh);font-size:20px;font-weight:800;margin-bottom:20px}
+    .vs-card.us h3{color:var(--gold)}
+    .vs-card.them h3{color:rgba(255,255,255,.4)}
+    .vs-list{display:flex;flex-direction:column;gap:12px}
+    .vs-item{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;line-height:1.6}
+    .vs-item.good{color:rgba(255,255,255,.85)}
+    .vs-item.bad{color:rgba(255,255,255,.35)}
+    .vs-icon{flex-shrink:0;font-size:16px;margin-top:1px}
+
+    /* BATCH INFO */
+    .batch-section{background:var(--off-white)}
+    .batch-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .batch-card{background:var(--white);border-radius:var(--radius);padding:32px 28px;border:1px solid var(--gray-200);text-align:center;transition:transform var(--tr),box-shadow var(--tr)}
+    .batch-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+    .batch-icon{font-size:36px;margin-bottom:14px}
+    .batch-card h3{font-family:var(--fh);font-size:18px;font-weight:700;color:var(--navy);margin-bottom:10px}
+    .batch-card p{font-size:14px;color:var(--gray-600);line-height:1.65;margin-bottom:16px}
+    .batch-tag{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;padding:4px 12px;border-radius:100px}
+
+    /* TESTIMONIALS */
+    .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .testi-card{background:var(--white);border-radius:var(--radius);padding:32px 28px;border:1px solid var(--gray-200);transition:transform var(--tr),box-shadow var(--tr)}
+    .testi-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+    .stars{color:var(--gold);font-size:13px;letter-spacing:1px;margin-bottom:14px}
+    .tq{font-size:42px;line-height:1;color:var(--accent-soft);font-family:Georgia,serif;margin-bottom:8px}
+    .testi-card p{font-size:14.5px;color:var(--gray-600);line-height:1.7;margin-bottom:20px}
+    .ta{display:flex;align-items:center;gap:12px}
+    .tav{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--purple));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;font-size:15px;color:var(--white);flex-shrink:0}
+    .tan{font-weight:600;font-size:14px;color:var(--navy)}
+    .tar{font-size:12.5px;color:var(--gray-400)}
+
+    /* CTA BAND */
+    .cta-band{background:linear-gradient(135deg,var(--accent),var(--purple));padding:72px 0;text-align:center}
+    .cta-band h2{font-family:var(--fh);font-size:clamp(28px,3.5vw,42px);font-weight:800;color:var(--white);margin-bottom:16px;letter-spacing:-.02em}
+    .cta-band p{font-size:17px;color:rgba(255,255,255,.8);margin-bottom:36px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7}
+    .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .btn-white{background:var(--white);color:var(--accent);font-size:15px;padding:14px 32px;font-weight:700}.btn-white:hover{background:var(--off-white);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.15)}
+    .btn-ghost{background:rgba(255,255,255,.15);color:var(--white);border:1.5px solid rgba(255,255,255,.4);font-size:15px;padding:13px 32px}.btn-ghost:hover{background:rgba(255,255,255,.25)}
+
+    /* FOOTER */
+    footer{background:var(--navy);color:rgba(255,255,255,.75);padding:64px 0 0}
+    .fg{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .fb img{height:42px;margin-bottom:16px;filter:brightness(0) invert(1)}
+    .fb p{font-size:14px;line-height:1.7;max-width:300px}
+    .fc h4{font-family:var(--fh);font-size:15px;font-weight:700;color:var(--white);margin-bottom:16px}
+    .fl{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .fl a{font-size:14px;color:rgba(255,255,255,.6);transition:color var(--tr)}.fl a:hover{color:var(--white)}
+    .fct{display:flex;flex-direction:column;gap:10px}
+    .fct a{font-size:14px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:8px;transition:color var(--tr)}.fct a:hover{color:var(--white)}
+    .fbot{padding:20px 0;display:flex;align-items:center;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.35)}
+    .sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:800;background:var(--white);border-top:1px solid var(--gray-200);padding:12px 16px;gap:10px;box-shadow:0 -4px 20px rgba(0,0,0,.1)}
+    .sticky-cta .btn{flex:1;justify-content:center;font-size:14px;padding:12px}
+
+    @media(max-width:1024px){.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}.gallery-item.tall{grid-row:span 1}.features-grid{grid-template-columns:1fr 1fr}.testi-grid{grid-template-columns:1fr 1fr}.testi-grid .testi-card:last-child{display:none}}
+    @media(max-width:768px){
+      .nav-links,.nav-cta{display:none}.hamburger{display:flex}
+      .gallery-grid{grid-template-columns:1fr;grid-template-rows:auto}.gallery-item{height:240px}
+      .inside-grid{grid-template-columns:1fr}.vs-grid{grid-template-columns:1fr}.batch-cards{grid-template-columns:1fr}
+      .features-grid{grid-template-columns:1fr}.testi-grid{grid-template-columns:1fr}.testi-grid .testi-card:last-child{display:block}
+      .fg{grid-template-columns:1fr;gap:32px}.fbot{flex-direction:column;gap:8px;text-align:center}
+      .sticky-cta{display:flex}body{padding-bottom:72px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="brand_logo.png" alt="GenAI Gurukul"/></a>
+    <ul class="nav-links">
+      <li><a href="why-us.html">Why Us</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="classroom.html" class="active">Classroom</a></li>
+      <li><a href="index.html#roadmap">Roadmap</a></li>
+      <li><a href="index.html#location">Location</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:9354661288" class="btn btn-outline">📞 Call Now</a>
+      <a href="https://wa.me/919354661288" target="_blank" class="btn btn-primary">Book Demo</a>
+    </div>
+    <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+  </div>
+  <div class="mobile-nav" id="mnav">
+    <a href="why-us.html">Why Us</a><a href="courses.html">Courses</a><a href="classroom.html">Classroom</a><a href="index.html#roadmap">Roadmap</a><a href="index.html#location">Location</a>
+    <div class="mob-cta">
+      <a href="tel:9354661288" class="btn btn-outline">📞 Call: 9354661288</a>
+      <a href="https://wa.me/919354661288" target="_blank" class="btn btn-wa">💬 WhatsApp</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="ph-breadcrumb"><a href="index.html">Home</a><span>/</span><span style="color:rgba(255,255,255,.8)">Classroom</span></div>
+    <h1 class="ph-title">Our <em>Classroom</em><br/>Experience</h1>
+    <p class="ph-sub">Real classroom. Real trainer. Real learning. See what it's like to study at GenAI Gurukul in Kandivali East, Mumbai.</p>
+  </div>
+</div>
+
+<!-- PHOTO GALLERY -->
+<section class="gallery-section">
+  <div class="container">
+    <div class="sh c fade-up">
+      <div class="sl">Inside Our Classroom</div>
+      <h2 class="st">Where Learning Happens</h2>
+      <p class="ss">A focused, professional environment designed for serious learning — not a noisy coaching class.</p>
+    </div>
+    <div class="gallery-grid fade-up">
+      <div class="gallery-item tall">
+        <img src="WhatsApp_Image_2026-05-09_at_2_51_11_PM.jpeg" alt="Trainer at the whiteboard"/>
+        <div class="gallery-overlay"></div>
+        <div class="gallery-caption">Live whiteboard session with trainer</div>
+      </div>
+      <div class="gallery-item">
+        <img src="WhatsApp_Image_2026-05-09_at_2_50_59_PM.jpeg" alt="Students working on laptops"/>
+        <div class="gallery-overlay"></div>
+        <div class="gallery-caption">Hands-on coding session</div>
+      </div>
+      <div class="gallery-item">
+        <img src="WhatsApp_Image_2026-05-09_at_2_50_46_PM.jpeg" alt="Small group practical session"/>
+        <div class="gallery-overlay"></div>
+        <div class="gallery-caption">Small batch — focused & personal</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT HAPPENS INSIDE -->
+<section class="inside-section">
+  <div class="container">
+    <div class="sh fade-up">
+      <div class="sl">A Typical Session</div>
+      <h2 class="st">What Happens Inside<br/>Every Class?</h2>
+      <p class="ss">Every session is structured, practical, and paced for real learning — not just content delivery.</p>
+    </div>
+    <div class="inside-grid">
+      <div class="inside-steps fade-up">
+        <div class="inside-step">
+          <div class="is-num">1</div>
+          <div class="is-body"><h4>Concept Introduction</h4><p>The trainer introduces the concept on the whiteboard or screen — clearly, with real-world analogies. No death-by-slides.</p></div>
+        </div>
+        <div class="inside-step">
+          <div class="is-num">2</div>
+          <div class="is-body"><h4>Live Coding Demonstration</h4><p>Trainer codes the solution live on screen. Students follow along on their own laptops simultaneously — no passive watching.</p></div>
+        </div>
+        <div class="inside-step">
+          <div class="is-num">3</div>
+          <div class="is-body"><h4>Student Practice</h4><p>Students attempt the problem independently on real datasets. The trainer walks the room, checking progress and giving individual feedback.</p></div>
+        </div>
+        <div class="inside-step">
+          <div class="is-num">4</div>
+          <div class="is-body"><h4>Doubt Resolution</h4><p>No question goes unanswered. Doubts are addressed in the session — not deferred to a WhatsApp group or support ticket.</p></div>
+        </div>
+        <div class="inside-step">
+          <div class="is-num">5</div>
+          <div class="is-body"><h4>Project Assignment</h4><p>At the end of each module, students receive a mini project to apply what they've learned. Projects accumulate into a full portfolio.</p></div>
+        </div>
+      </div>
+      <div class="inside-img-stack fade-up" style="transition-delay:.15s">
+        <img src="WhatsApp_Image_2026-05-09_at_2_51_11_PM.jpeg" alt="Trainer explaining concept" style="height:260px"/>
+        <img src="WhatsApp_Image_2026-05-09_at_2_50_46_PM.jpeg" alt="Students practicing" style="height:200px"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLASSROOM FEATURES -->
+<section>
+  <div class="container">
+    <div class="sh c fade-up">
+      <div class="sl">Setup & Environment</div>
+      <h2 class="st">Built for Serious Learning</h2>
+      <p class="ss">Every detail of our setup is designed to maximise learning outcomes.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-up">
+        <div class="fc-icon">🖥️</div>
+        <h3>Large Display Screen</h3>
+        <p>High-quality projection and screen setup so every student can clearly see the code and diagrams from anywhere in the room.</p>
+      </div>
+      <div class="feature-card fade-up" style="transition-delay:.07s">
+        <div class="fc-icon">📋</div>
+        <h3>Whiteboard Explanation</h3>
+        <p>Concepts are explained on the whiteboard before they're coded — so you understand the logic before you see the syntax.</p>
+      </div>
+      <div class="feature-card fade-up" style="transition-delay:.14s">
+        <div class="fc-icon">💻</div>
+        <h3>Bring Your Own Laptop</h3>
+        <p>Every student codes on their own machine. You install the tools, you run the code — so everything works on your device, not just a demo.</p>
+      </div>
+      <div class="feature-card fade-up" style="transition-delay:.21s">
+        <div class="fc-icon">👥</div>
+        <h3>Small Batch Size</h3>
+        <p>Limited seats per batch ensures every student gets individual attention. No one gets lost in a crowd of 50+ students.</p>
+      </div>
+      <div class="feature-card fade-up" style="transition-delay:.28s">
+        <div class="fc-icon">🏢</div>
+        <h3>Professional Space</h3>
+        <p>Located in a co-working style facility in Thakur Village, Kandivali East — a comfortable, focused, professional environment.</p>
+      </div>
+      <div class="feature-card fade-up" style="transition-delay:.35s">
+        <div class="fc-icon">🎯</div>
+        <h3>Pace That Works for You</h3>
+        <p>We go at the batch's pace. No concept is rushed. If the class needs more time on a topic, we take it — clarity over completion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VS ONLINE -->
+<section class="vs-section">
+  <div class="container">
+    <div class="sh c fade-up" style="padding-top:8px">
+      <div class="sl" style="color:var(--gold)">Offline vs Online</div>
+      <h2 class="st" style="color:var(--white)">Why Offline Wins Every Time</h2>
+      <p class="ss" style="color:rgba(255,255,255,.65);margin:0 auto">The numbers don't lie — online course completion rates are below 5%. Here's why the classroom matters.</p>
+    </div>
+    <div class="vs-grid fade-up">
+      <div class="vs-card us">
+        <h3>✅ GenAI Gurukul (Offline)</h3>
+        <div class="vs-list">
+          <div class="vs-item good"><span class="vs-icon">✓</span> Real-time doubt solving — ask and get answered immediately</div>
+          <div class="vs-item good"><span class="vs-icon">✓</span> Accountability — you show up, you code, you progress</div>
+          <div class="vs-item good"><span class="vs-icon">✓</span> Personal attention from a trainer who knows your name</div>
+          <div class="vs-item good"><span class="vs-icon">✓</span> Small batches — nobody falls behind, nobody gets bored</div>
+          <div class="vs-item good"><span class="vs-icon">✓</span> Projects done in-session with trainer guidance</div>
+          <div class="vs-item good"><span class="vs-icon">✓</span> Peer learning — sitting with other serious learners drives you forward</div>
+          <div class="vs-item good"><span class="vs-icon">✓</span> Structured sequence — no decision fatigue about what to learn next</div>
+        </div>
+      </div>
+      <div class="vs-card them">
+        <h3>❌ Generic Online Courses</h3>
+        <div class="vs-list">
+          <div class="vs-item bad"><span class="vs-icon">✗</span> Doubts go to forums — answered days later, if at all</div>
+          <div class="vs-item bad"><span class="vs-icon">✗</span> Zero accountability — easy to pause, easy to quit</div>
+          <div class="vs-item bad"><span class="vs-icon">✗</span> One-size-fits-all for thousands of students</div>
+          <div class="vs-item bad"><span class="vs-icon">✗</span> Completion rates below 5% — most never finish</div>
+          <div class="vs-item bad"><span class="vs-icon">✗</span> Toy exercises — not real-world application</div>
+          <div class="vs-item bad"><span class="vs-icon">✗</span> Isolated learning — no peer group, no energy</div>
+          <div class="vs-item bad"><span class="vs-icon">✗</span> Overwhelming curriculum — no clear next step</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BATCH INFO -->
+<section class="batch-section">
+  <div class="container">
+    <div class="sh c fade-up">
+      <div class="sl">Batch Information</div>
+      <h2 class="st">Find a Batch That Fits Your Schedule</h2>
+      <p class="ss">We run multiple batches to accommodate students and working professionals alike.</p>
+    </div>
+    <div class="batch-cards">
+      <div class="batch-card fade-up">
+        <div class="batch-icon">🌅</div>
+        <h3>Morning Batch</h3>
+        <p>Ideal for students and those with afternoon or evening commitments. Fresh mind, focused learning.</p>
+        <span class="batch-tag">Weekdays Available</span>
+      </div>
+      <div class="batch-card fade-up" style="transition-delay:.1s">
+        <div class="batch-icon">🌆</div>
+        <h3>Evening Batch</h3>
+        <p>Perfect for working professionals who have a day job. Learn after work without sacrificing quality.</p>
+        <span class="batch-tag">Weekdays Available</span>
+      </div>
+      <div class="batch-card fade-up" style="transition-delay:.2s">
+        <div class="batch-icon">📅</div>
+        <h3>Weekend Batch</h3>
+        <p>Saturday and Sunday sessions for those who can't commit on weekdays. Longer sessions, complete coverage.</p>
+        <span class="batch-tag">Sat & Sun</span>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px" class="fade-up">
+      <p style="font-size:15px;color:var(--gray-600);margin-bottom:20px">Limited seats per batch — call to check availability and current schedule.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="tel:9354661288" class="btn btn-accent">📞 Call to Check Availability</a>
+        <a href="https://wa.me/919354661288" target="_blank" class="btn btn-wa">💬 WhatsApp for Schedule</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="container">
+    <div class="sh c fade-up">
+      <div class="sl">Student Feedback</div>
+      <h2 class="st">What Students Say About<br/>the Classroom</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fade-up">
+        <div class="stars">★★★★★</div>
+        <div class="tq">"</div>
+        <p>The small batch size is what makes the difference. The trainer actually checks your work and corrects your approach in real time. Nothing like that happens in any online course.</p>
+        <div class="ta"><div class="tav">S</div><div><div class="tan">Sneha R.</div><div class="tar">Data Analyst, Andheri</div></div></div>
+      </div>
+      <div class="testi-card fade-up" style="transition-delay:.1s">
+        <div class="stars">★★★★★</div>
+        <div class="tq">"</div>
+        <p>I joined the weekend batch while working a full-time job. The pace was perfect — not too rushed, covered everything thoroughly. The offline environment kept me accountable.</p>
+        <div class="ta"><div class="tav">K</div><div><div class="tan">Karan T.</div><div class="tar">IT Professional, Borivali</div></div></div>
+      </div>
+      <div class="testi-card fade-up" style="transition-delay:.2s">
+        <div class="stars">★★★★★</div>
+        <div class="tq">"</div>
+        <p>Coming from a non-technical background, I was nervous. But the classroom environment and the trainer's patience made it easy to learn. I built my first Power BI dashboard in week 2.</p>
+        <div class="ta"><div class="tav">M</div><div><div class="tan">Meera P.</div><div class="tar">MBA Fresher, Kandivali</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="container">
+    <h2>Come See It for Yourself</h2>
+    <p>Book a free demo session. Walk into the classroom, meet the trainer, and experience the learning environment before you commit.</p>
+    <div class="cta-btns">
+      <a href="tel:9354661288" class="btn btn-white">📞 Call Now: 9354661288</a>
+      <a href="https://wa.me/919354661288" target="_blank" class="btn btn-ghost">💬 Book Free Demo on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer><div class="container">
+  <div class="fg">
+    <div class="fb"><img src="brand_logo.png" alt="GenAI Gurukul"/><p>Practical Data Science & Generative AI training for serious learners. Offline classroom. Real projects. Real skills.</p></div>
+    <div class="fc"><h4>Pages</h4><ul class="fl"><li><a href="why-us.html">Why Choose Us</a></li><li><a href="courses.html">Courses</a></li><li><a href="classroom.html">Classroom</a></li><li><a href="index.html#roadmap">Career Roadmap</a></li><li><a href="index.html#location">Location</a></li></ul></div>
+    <div class="fc"><h4>Contact</h4><div class="fct"><a href="tel:9354661288">📞 9354661288</a><a href="https://wa.me/919354661288" target="_blank">💬 WhatsApp Us</a><a href="mailto:genaigurukul@gmail.com">✉️ genaigurukul@gmail.com</a><a href="https://genaigurukul.in" target="_blank">🌐 genaigurukul.in</a></div></div>
+  </div>
+  <div class="fbot"><span>© 2026 GenAI Gurukul. All rights reserved.</span><span>A 103, Samarth Bldg, Kandivali East, Mumbai 400101</span></div>
+</div></footer>
+
+<div class="sticky-cta">
+  <a href="tel:9354661288" class="btn btn-primary">📞 Call</a>
+  <a href="https://wa.me/919354661288" target="_blank" class="btn btn-wa">💬 WhatsApp</a>
+  <a href="courses.html" class="btn btn-outline">View Courses</a>
+</div>
+
+<script>
+  const nb=document.getElementById('navbar');
+  window.addEventListener('scroll',()=>nb.classList.toggle('scrolled',scrollY>20));
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+  function toggleNav(){document.getElementById('mnav').classList.toggle('open')}
+</script>
+</body>
+</html>
