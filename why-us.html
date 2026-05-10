@@ -1,87 +1,450 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Why Choose Us — GenAI Gurukul</title>
+  <meta name="description" content="Discover why GenAI Gurukul is the right choice for your Data Science and AI career — industry training, practical approach, personal attention."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--navy:#0d1b3e;--navy-mid:#1a2f5e;--accent:#2563eb;--accent-soft:#dbeafe;--accent-dark:#1d4ed8;--purple:#6d28d9;--gold:#f59e0b;--white:#fff;--off-white:#f8faff;--gray-100:#f3f4f6;--gray-200:#e5e7eb;--gray-400:#9ca3af;--gray-600:#4b5563;--text:#111827;--radius:14px;--shadow-sm:0 1px 3px rgba(0,0,0,.06);--shadow-md:0 4px 16px rgba(0,0,0,.08);--shadow-lg:0 12px 40px rgba(0,0,0,.1);--fh:'Syne',sans-serif;--fb:'DM Sans',sans-serif;--tr:.25s cubic-bezier(.4,0,.2,1)}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--fb);color:var(--text);background:var(--white);line-height:1.65;overflow-x:hidden}
+    img{max-width:100%;display:block}a{text-decoration:none;color:inherit}
+    .container{max-width:1160px;margin:0 auto;padding:0 24px}
+    .fade-up{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+    .fade-up.visible{opacity:1;transform:translateY(0)}
+
+    /* NAVBAR */
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(255,255,255,.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--gray-200);transition:box-shadow var(--tr)}
+    .navbar.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.08)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;padding:0 24px;max-width:1160px;margin:0 auto}
+    .nav-logo img{height:42px;width:auto}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{font-size:14.5px;font-weight:500;color:var(--gray-600);transition:color var(--tr)}
+    .nav-links a:hover,.nav-links a.active{color:var(--accent)}
+    .nav-cta{display:flex;gap:10px}
+    .btn{display:inline-flex;align-items:center;gap:7px;padding:11px 22px;border-radius:8px;font-family:var(--fb);font-size:14.5px;font-weight:600;cursor:pointer;border:none;transition:all var(--tr);white-space:nowrap}
+    .btn-primary{background:var(--navy);color:var(--white)}.btn-primary:hover{background:var(--navy-mid);transform:translateY(-1px);box-shadow:0 4px 14px rgba(13,27,62,.22)}
+    .btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:var(--white)}
+    .btn-accent{background:var(--accent);color:var(--white);font-size:15px;padding:13px 28px}.btn-accent:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,.3)}
+    .btn-wa{background:#25d366;color:var(--white);font-size:15px;padding:13px 28px}.btn-wa:hover{background:#1ebe5c;transform:translateY(-2px)}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--navy);border-radius:2px}
+    .mobile-nav{display:none;flex-direction:column;background:var(--white);border-top:1px solid var(--gray-200);padding:16px 24px 24px;gap:4px}
+    .mobile-nav.open{display:flex}
+    .mobile-nav a{padding:12px 0;font-size:15px;font-weight:500;color:#1f2937;border-bottom:1px solid var(--gray-100)}
+    .mob-cta{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+    .mob-cta .btn{justify-content:center;font-size:15px;padding:13px}
+
+    /* PAGE HERO */
+    .page-hero{padding:140px 0 80px;background:linear-gradient(135deg,#0d1b3e 0%,#1e3a8a 100%);position:relative;overflow:hidden}
+    .page-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.06) 1px,transparent 1px);background-size:32px 32px}
+    .page-hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:60px;background:var(--white);clip-path:ellipse(55% 100% at 50% 100%)}
+    .page-hero .container{position:relative;z-index:1;text-align:center}
+    .ph-breadcrumb{display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;color:rgba(255,255,255,.5);margin-bottom:20px}
+    .ph-breadcrumb a{color:rgba(255,255,255,.5);transition:color var(--tr)}.ph-breadcrumb a:hover{color:rgba(255,255,255,.9)}
+    .ph-breadcrumb span{color:rgba(255,255,255,.3)}
+    .ph-title{font-family:var(--fh);font-size:clamp(36px,5vw,60px);font-weight:800;color:var(--white);letter-spacing:-.025em;line-height:1.1;margin-bottom:20px}
+    .ph-title em{color:var(--gold);font-style:normal}
+    .ph-sub{font-size:18px;color:rgba(255,255,255,.7);max-width:600px;margin:0 auto;line-height:1.7}
+
+    /* SHARED */
+    section{padding:80px 0}
+    .sl{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+    .st{font-family:var(--fh);font-size:clamp(26px,3.2vw,40px);font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1.18;margin-bottom:14px}
+    .ss{font-size:17px;color:var(--gray-600);line-height:1.7;max-width:560px}
+    .sh{margin-bottom:48px}.sh.c{text-align:center}.sh.c .ss{margin:0 auto}
+
+    /* COMPARISON TABLE */
+    .comp-section{background:var(--off-white)}
+    .comp-table{width:100%;border-collapse:collapse;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-md)}
+    .comp-table thead tr{background:var(--navy)}
+    .comp-table th{padding:18px 24px;text-align:left;font-family:var(--fh);font-size:15px;font-weight:700;color:var(--white)}
+    .comp-table th:first-child{width:35%}
+    .comp-table th.good{color:var(--gold)}
+    .comp-table th.bad{color:rgba(255,255,255,.5)}
+    .comp-table tbody tr{border-bottom:1px solid var(--gray-200);background:var(--white)}
+    .comp-table tbody tr:nth-child(even){background:var(--off-white)}
+    .comp-table tbody tr:hover{background:var(--accent-soft)}
+    .comp-table td{padding:16px 24px;font-size:14.5px;color:var(--gray-600);vertical-align:top}
+    .comp-table td:first-child{font-weight:600;color:var(--navy)}
+    .comp-table .yes{color:#16a34a;font-weight:600;display:flex;align-items:center;gap:6px}
+    .comp-table .no{color:#dc2626;font-weight:500;display:flex;align-items:center;gap:6px}
+
+    /* MAIN WHY CARDS */
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .why-card{background:var(--white);border-radius:var(--radius);padding:36px 28px;border:1px solid var(--gray-200);transition:transform var(--tr),box-shadow var(--tr);position:relative;overflow:hidden}
+    .why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--purple));opacity:0;transition:opacity var(--tr)}
+    .why-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}.why-card:hover::before{opacity:1}
+    .wc-num{font-family:var(--fh);font-size:48px;font-weight:800;color:var(--accent-soft);line-height:1;margin-bottom:16px}
+    .wc-icon{font-size:32px;margin-bottom:16px}
+    .why-card h3{font-family:var(--fh);font-size:19px;font-weight:700;color:var(--navy);margin-bottom:12px}
+    .why-card p{font-size:14.5px;color:var(--gray-600);line-height:1.7}
+    .why-card ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:12px}
+    .why-card ul li{font-size:14px;color:var(--gray-600);display:flex;align-items:flex-start;gap:8px}
+    .why-card ul li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0}
+
+    /* DIFFERENCE SECTION */
+    .diff-section{background:var(--navy);color:var(--white)}
+    .diff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.1);border-radius:var(--radius);overflow:hidden}
+    .diff-item{background:var(--navy);padding:36px 28px;text-align:center}
+    .diff-icon{font-size:36px;margin-bottom:16px}
+    .diff-item h3{font-family:var(--fh);font-size:16px;font-weight:700;color:var(--white);margin-bottom:10px;line-height:1.3}
+    .diff-item p{font-size:13.5px;color:rgba(255,255,255,.6);line-height:1.6}
+
+    /* FOR WHO */
+    .who-section{background:var(--off-white)}
+    .who-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    .who-card{background:var(--white);border-radius:var(--radius);padding:36px 32px;border:1px solid var(--gray-200);display:flex;gap:20px;transition:transform var(--tr),box-shadow var(--tr)}
+    .who-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+    .who-icon{font-size:40px;flex-shrink:0}
+    .who-card h3{font-family:var(--fh);font-size:19px;font-weight:700;color:var(--navy);margin-bottom:10px}
+    .who-card p{font-size:14.5px;color:var(--gray-600);line-height:1.7;margin-bottom:14px}
+    .who-tags{display:flex;flex-wrap:wrap;gap:8px}
+    .who-tag{background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;padding:4px 12px;border-radius:100px}
+
+    /* TESTIMONIALS */
+    .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .testi-card{background:var(--white);border-radius:var(--radius);padding:32px 28px;border:1px solid var(--gray-200);transition:transform var(--tr),box-shadow var(--tr)}
+    .testi-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+    .stars{color:var(--gold);font-size:13px;letter-spacing:1px;margin-bottom:14px}
+    .tq{font-size:42px;line-height:1;color:var(--accent-soft);font-family:Georgia,serif;margin-bottom:8px}
+    .testi-card p{font-size:14.5px;color:var(--gray-600);line-height:1.7;margin-bottom:20px}
+    .ta{display:flex;align-items:center;gap:12px}
+    .tav{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--purple));display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;font-size:15px;color:var(--white);flex-shrink:0}
+    .tan{font-weight:600;font-size:14px;color:var(--navy)}
+    .tar{font-size:12.5px;color:var(--gray-400)}
+
+    /* CTA BAND */
+    .cta-band{background:linear-gradient(135deg,var(--accent),var(--purple));padding:72px 0;text-align:center}
+    .cta-band h2{font-family:var(--fh);font-size:clamp(28px,3.5vw,42px);font-weight:800;color:var(--white);margin-bottom:16px;letter-spacing:-.02em}
+    .cta-band p{font-size:17px;color:rgba(255,255,255,.8);margin-bottom:36px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7}
+    .cta-band .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .btn-white{background:var(--white);color:var(--accent);font-size:15px;padding:14px 32px;font-weight:700}
+    .btn-white:hover{background:var(--off-white);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.15)}
+    .btn-ghost{background:rgba(255,255,255,.15);color:var(--white);border:1.5px solid rgba(255,255,255,.4);font-size:15px;padding:13px 32px}
+    .btn-ghost:hover{background:rgba(255,255,255,.25)}
+
+    /* FOOTER */
+    footer{background:var(--navy);color:rgba(255,255,255,.75);padding:64px 0 0}
+    .fg{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .fb img{height:42px;margin-bottom:16px;filter:brightness(0) invert(1)}
+    .fb p{font-size:14px;line-height:1.7;max-width:300px}
+    .fc h4{font-family:var(--fh);font-size:15px;font-weight:700;color:var(--white);margin-bottom:16px}
+    .fl{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .fl a{font-size:14px;color:rgba(255,255,255,.6);transition:color var(--tr)}.fl a:hover{color:var(--white)}
+    .fct{display:flex;flex-direction:column;gap:10px}
+    .fct a{font-size:14px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:8px;transition:color var(--tr)}.fct a:hover{color:var(--white)}
+    .fbot{padding:20px 0;display:flex;align-items:center;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.35)}
+    .sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:800;background:var(--white);border-top:1px solid var(--gray-200);padding:12px 16px;gap:10px;box-shadow:0 -4px 20px rgba(0,0,0,.1)}
+    .sticky-cta .btn{flex:1;justify-content:center;font-size:14px;padding:12px}
+
+    @media(max-width:1024px){.why-grid{grid-template-columns:repeat(2,1fr)}.diff-grid{grid-template-columns:repeat(2,1fr)}.testi-grid{grid-template-columns:1fr 1fr}.testi-grid .testi-card:last-child{display:none}}
+    @media(max-width:768px){
+      .nav-links,.nav-cta{display:none}.hamburger{display:flex}
+      .why-grid{grid-template-columns:1fr}.diff-grid{grid-template-columns:1fr 1fr}.who-cards{grid-template-columns:1fr}
+      .testi-grid{grid-template-columns:1fr}.testi-grid .testi-card:last-child{display:block}
+      .fg{grid-template-columns:1fr;gap:32px}.fbot{flex-direction:column;gap:8px;text-align:center}
+      .sticky-cta{display:flex}body{padding-bottom:72px}
+      .comp-table{font-size:13px}.comp-table th,.comp-table td{padding:12px 14px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="brand_logo.png" alt="GenAI Gurukul"/></a>
+    <ul class="nav-links">
+      <li><a href="why-us.html" class="active">Why Us</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="classroom.html">Classroom</a></li>
+      <li><a href="index.html#roadmap">Roadmap</a></li>
+      <li><a href="index.html#location">Location</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="tel:9354661288" class="btn btn-outline">📞 Call Now</a>
+      <a href="https://wa.me/919354661288" target="_blank" class="btn btn-primary">Book Demo</a>
+    </div>
+    <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+  </div>
+  <div class="mobile-nav" id="mnav">
+    <a href="why-us.html">Why Us</a><a href="courses.html">Courses</a><a href="classroom.html">Classroom</a><a href="index.html#roadmap">Roadmap</a><a href="index.html#location">Location</a>
+    <div class="mob-cta">
+      <a href="tel:9354661288" class="btn btn-outline">📞 Call: 9354661288</a>
+      <a href="https://wa.me/919354661288" target="_blank" class="btn btn-wa">💬 WhatsApp</a>
+    </div>
+  </div>
 </nav>
 
-<section class="hero">
-<div class="container">
-<h1>Why Students Choose GenAI Gurukul</h1>
-<p>We focus on practical learning, structured career direction, and real-world skills instead of random tutorials and confusing learning paths.</p>
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="ph-breadcrumb"><a href="index.html">Home</a><span>/</span><span style="color:rgba(255,255,255,.8)">Why Choose Us</span></div>
+    <h1 class="ph-title">Why Choose<br/><em>GenAI Gurukul?</em></h1>
+    <p class="ph-sub">Not just another coaching class. A structured, practical, offline learning experience designed to build real skills and launch real careers.</p>
+  </div>
 </div>
+
+<!-- MAIN WHY CARDS -->
+<section>
+  <div class="container">
+    <div class="sh c fade-up">
+      <div class="sl">Our Strengths</div>
+      <h2 class="st">6 Reasons Serious Learners Choose Us</h2>
+      <p class="ss">Each pillar is designed to give you an advantage over self-taught learners and online course consumers.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-up">
+        <div class="wc-num">01</div>
+        <div class="wc-icon">🏭</div>
+        <h3>Industry-Driven Training</h3>
+        <p>Our trainer comes with real industry experience — not a textbook background. You learn how data tools are actually used in real jobs, not just how they're documented.</p>
+        <ul>
+          <li>Trainer with hands-on corporate experience</li>
+          <li>Real scenarios from actual data workflows</li>
+          <li>Current tools used in the market today</li>
+        </ul>
+      </div>
+      <div class="why-card fade-up" style="transition-delay:.07s">
+        <div class="wc-num">02</div>
+        <div class="wc-icon">⚙️</div>
+        <h3>Practical Learning Approach</h3>
+        <p>Every session is built around doing, not watching. You open your laptop on Day 1 and don't close it until you've built something.</p>
+        <ul>
+          <li>Hands-on sessions with real-world datasets</li>
+          <li>Focus on application over memorisation</li>
+          <li>No passive note-taking — active coding</li>
+        </ul>
+      </div>
+      <div class="why-card fade-up" style="transition-delay:.14s">
+        <div class="wc-num">03</div>
+        <div class="wc-icon">📊</div>
+        <h3>Project-Based Learning</h3>
+        <p>You graduate with a portfolio, not just a certificate. Every track includes real projects that you can showcase to employers.</p>
+        <ul>
+          <li>End-to-end projects on live data</li>
+          <li>Portfolio-ready work from Day 1</li>
+          <li>Projects that mirror actual job tasks</li>
+        </ul>
+      </div>
+      <div class="why-card fade-up" style="transition-delay:.21s">
+        <div class="wc-num">04</div>
+        <div class="wc-icon">🗺️</div>
+        <h3>Guided Learning Path</h3>
+        <p>No more confusion about what to learn next. We give you a structured curriculum with a clear sequence — so you always know where you are and where you're going.</p>
+        <ul>
+          <li>Structured curriculum, zero guesswork</li>
+          <li>Clear roadmap from beginner to job-ready</li>
+          <li>No random YouTube rabbit holes</li>
+        </ul>
+      </div>
+      <div class="why-card fade-up" style="transition-delay:.28s">
+        <div class="wc-num">05</div>
+        <div class="wc-icon">🎯</div>
+        <h3>Personal Attention & Doubt Solving</h3>
+        <p>Small batches mean the trainer knows your name and your weak spots. Doubts get resolved immediately — not in a Discord channel two days later.</p>
+        <ul>
+          <li>Individual guidance for every student</li>
+          <li>Doubts resolved in the session itself</li>
+          <li>Paced learning, no one left behind</li>
+        </ul>
+      </div>
+      <div class="why-card fade-up" style="transition-delay:.35s">
+        <div class="wc-num">06</div>
+        <div class="wc-icon">📈</div>
+        <h3>Career Assistance</h3>
+        <p>We don't stop at teaching. We help you land the job — with resume reviews, mock interview prep, and career guidance from someone who knows the industry.</p>
+        <ul>
+          <li>Resume review and optimisation</li>
+          <li>Interview preparation & mock rounds</li>
+          <li>Guidance on career transition strategy</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="section">
-<div class="container">
-<div class="compare">
-<div class="compare-box bad">
-<h3>Random Learning</h3>
-<ul>
-<li>Too many tutorials</li>
-<li>No proper roadmap</li>
-<li>Theory-heavy learning</li>
-<li>No mentorship</li>
-<li>No project guidance</li>
-</ul>
-</div>
-<div class="compare-box good">
-<h3>GenAI Gurukul Approach</h3>
-<ul>
-<li>Structured learning path</li>
-<li>Offline classroom support</li>
-<li>Hands-on practical learning</li>
-<li>Career-focused approach</li>
-<li>Project-based learning</li>
-</ul>
-</div>
-</div>
-</div>
+<!-- WHAT MAKES US DIFFERENT -->
+<section class="diff-section">
+  <div class="container">
+    <div class="sh c fade-up" style="padding-top:8px">
+      <div class="sl" style="color:var(--gold)">What Makes Us Different</div>
+      <h2 class="st" style="color:var(--white)">4 Things You Won't Find Elsewhere</h2>
+    </div>
+    <div class="diff-grid fade-up">
+      <div class="diff-item">
+        <div class="diff-icon">🏛️</div>
+        <h3>Offline Classroom Experience</h3>
+        <p>Better interaction, better understanding, better accountability. You show up, you learn, you grow.</p>
+      </div>
+      <div class="diff-item">
+        <div class="diff-icon">💡</div>
+        <h3>Focus on Clarity Over Completion</h3>
+        <p>We ensure you truly understand every concept before moving on — no rushing, no skipping.</p>
+      </div>
+      <div class="diff-item">
+        <div class="diff-icon">🤝</div>
+        <h3>Personal Attention Every Session</h3>
+        <p>Individual guidance for every learner. Concepts are explained until you get them — not just once.</p>
+      </div>
+      <div class="diff-item">
+        <div class="diff-icon">⏱️</div>
+        <h3>Learn at a Pace That Works for You</h3>
+        <p>Concepts are made simple. We adapt to the batch — no one falls behind, no one is bored.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="section" style="background:#f8faff">
-<div class="container">
-<div class="grid">
-<div class="card">
-<h3>Industry-Oriented Learning</h3>
-<p>Learn concepts with practical examples and real datasets used in professional environments.</p>
-</div>
-<div class="card">
-<h3>Project-Based Approach</h3>
-<p>Build portfolio-ready projects that help you gain confidence and practical exposure.</p>
-</div>
-<div class="card">
-<h3>Offline Classroom Experience</h3>
-<p>Interactive learning sessions with direct guidance and better concept clarity.</p>
-</div>
-<div class="card">
-<h3>Career Guidance</h3>
-<p>Resume building, interview preparation, and roadmap guidance for long-term growth.</p>
-</div>
-</div>
-</div>
+<!-- COMPARISON TABLE -->
+<section class="comp-section">
+  <div class="container">
+    <div class="sh c fade-up">
+      <div class="sl">Comparison</div>
+      <h2 class="st">GenAI Gurukul vs. The Alternatives</h2>
+      <p class="ss">See exactly how we stack up against self-learning and generic online courses.</p>
+    </div>
+    <div class="fade-up">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="good">GenAI Gurukul ✓</th>
+            <th class="bad">Online Courses</th>
+            <th class="bad">Self-Learning (YouTube)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Structured Curriculum</td><td><span class="yes">✓ Full structured path</span></td><td><span class="yes">✓ Partially</span></td><td><span class="no">✗ None</span></td></tr>
+          <tr><td>Real-Time Doubt Solving</td><td><span class="yes">✓ In-session, instant</span></td><td><span class="no">✗ Forum / tickets</span></td><td><span class="no">✗ None</span></td></tr>
+          <tr><td>Hands-On Projects</td><td><span class="yes">✓ Real datasets, real builds</span></td><td><span class="no">✗ Toy exercises</span></td><td><span class="no">✗ Rarely</span></td></tr>
+          <tr><td>Industry Expert Trainer</td><td><span class="yes">✓ Corporate background</span></td><td><span class="no">✗ Varies widely</span></td><td><span class="no">✗ Unknown quality</span></td></tr>
+          <tr><td>Personal Attention</td><td><span class="yes">✓ Small batches</span></td><td><span class="no">✗ 1000s of students</span></td><td><span class="no">✗ Zero</span></td></tr>
+          <tr><td>Offline Classroom</td><td><span class="yes">✓ Physical presence</span></td><td><span class="no">✗ Screen only</span></td><td><span class="no">✗ Screen only</span></td></tr>
+          <tr><td>Career Assistance</td><td><span class="yes">✓ Resume + interviews</span></td><td><span class="no">✗ Generic tips</span></td><td><span class="no">✗ None</span></td></tr>
+          <tr><td>Certificate</td><td><span class="yes">✓ On completion</span></td><td><span class="yes">✓ Yes</span></td><td><span class="no">✗ None</span></td></tr>
+          <tr><td>Starting Price</td><td><span class="yes">✓ ₹999 onwards</span></td><td>₹5,000–₹50,000+</td><td>Free but scattered</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
-<section class="section">
-<div class="container">
-<h2 style="font-family:'Syne',sans-serif;font-size:42px;color:#0d1b3e;text-align:center">Your Learning Journey</h2>
-<div class="timeline">
-<div class="step">Beginner Foundation</div>
-<div class="step">Analytics Skills</div>
-<div class="step">Data Science</div>
-<div class="step">Generative AI</div>
-<div class="step">Career Growth</div>
-</div>
-</div>
+<!-- WHO IS THIS FOR -->
+<section class="who-section">
+  <div class="container">
+    <div class="sh c fade-up">
+      <div class="sl">Is This For You?</div>
+      <h2 class="st">Designed for Serious Learners</h2>
+      <p class="ss">Whether you're starting fresh or upskilling, GenAI Gurukul is built for you.</p>
+    </div>
+    <div class="who-cards">
+      <div class="who-card fade-up">
+        <div class="who-icon">🎓</div>
+        <div>
+          <h3>Students & Freshers</h3>
+          <p>You want to build real skills before entering the job market. You're tired of random tutorials and want a clear, guided path that ends with a portfolio and a job-ready profile.</p>
+          <div class="who-tags"><span class="who-tag">Recent Graduate</span><span class="who-tag">Engineering Student</span><span class="who-tag">Commerce Background</span><span class="who-tag">Any Stream</span></div>
+        </div>
+      </div>
+      <div class="who-card fade-up" style="transition-delay:.1s">
+        <div class="who-icon">💼</div>
+        <div>
+          <h3>Working Professionals</h3>
+          <p>You have a job but want to transition into data, analytics or AI. You need structured upskilling that fits around your schedule — weekday and weekend batches available.</p>
+          <div class="who-tags"><span class="who-tag">IT Professional</span><span class="who-tag">Operations</span><span class="who-tag">Finance / Analyst</span><span class="who-tag">Looking to Switch</span></div>
+        </div>
+      </div>
+      <div class="who-card fade-up" style="transition-delay:.2s">
+        <div class="who-icon">📊</div>
+        <div>
+          <h3>Data Enthusiasts</h3>
+          <p>You've watched YouTube videos and done free courses but feel like you're going in circles. You need structure, mentorship, and a project to show for your time.</p>
+          <div class="who-tags"><span class="who-tag">Self-taught Learner</span><span class="who-tag">Excel User</span><span class="who-tag">Curious about AI</span></div>
+        </div>
+      </div>
+      <div class="who-card fade-up" style="transition-delay:.3s">
+        <div class="who-icon">🤖</div>
+        <div>
+          <h3>AI Explorers</h3>
+          <p>You want to understand Generative AI, build AI-powered apps, and stay ahead in your field. You need practical, hands-on training from someone who actually builds with AI.</p>
+          <div class="who-tags"><span class="who-tag">Business Owner</span><span class="who-tag">Tech Enthusiast</span><span class="who-tag">AI Curious</span><span class="who-tag">Automation Seeker</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<footer>
-<div class="container">
-<h3>GenAI Gurukul</h3>
-<p>Offline Data Science & Generative AI training in Kandivali East, Mumbai.</p>
-</div>
-</footer>
+<!-- TESTIMONIALS -->
+<section>
+  <div class="container">
+    <div class="sh c fade-up">
+      <div class="sl">Student Reviews</div>
+      <h2 class="st">What Our Students Say</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fade-up">
+        <div class="stars">★★★★★</div>
+        <div class="tq">"</div>
+        <p>The offline classroom format made a huge difference. I could ask doubts instantly and the trainer explained everything with real examples. Best decision for my career.</p>
+        <div class="ta"><div class="tav">R</div><div><div class="tan">Rahul M.</div><div class="tar">Data Analyst, Mumbai</div></div></div>
+      </div>
+      <div class="testi-card fade-up" style="transition-delay:.1s">
+        <div class="stars">★★★★★</div>
+        <div class="tq">"</div>
+        <p>I was struggling with online courses for months. GenAI Gurukul's structured path and hands-on projects gave me the clarity I needed. Got placed within 3 months of completing the course.</p>
+        <div class="ta"><div class="tav">P</div><div><div class="tan">Priya S.</div><div class="tar">Working Professional, Kandivali</div></div></div>
+      </div>
+      <div class="testi-card fade-up" style="transition-delay:.2s">
+        <div class="stars">★★★★★</div>
+        <div class="tq">"</div>
+        <p>The Python and SQL modules were exceptionally well taught. Each concept was backed by a real project. I now confidently work with data in my job. Highly recommend.</p>
+        <div class="ta"><div class="tav">A</div><div><div class="tan">Amit K.</div><div class="tar">Student, Thakur Village</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="sticky">
-<a href="tel:9511684062" class="call">📞 Call Now</a>
-<a href="https://wa.me/919511684062" class="wa">💬 WhatsApp</a>
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="container">
+    <h2>Ready to Start Your Data Career?</h2>
+    <p>Limited seats per batch. Book your demo session today — it's free, it's offline, and it could change your career.</p>
+    <div class="btns">
+      <a href="tel:9354661288" class="btn btn-white">📞 Call Now: 9354661288</a>
+      <a href="https://wa.me/919354661288" target="_blank" class="btn btn-ghost">💬 Book Demo on WhatsApp</a>
+    </div>
+  </div>
 </div>
 
+<!-- FOOTER -->
+<footer><div class="container">
+  <div class="fg">
+    <div class="fb"><img src="brand_logo.png" alt="GenAI Gurukul"/><p>Practical Data Science & Generative AI training for serious learners. Offline classroom. Real projects. Real skills.</p></div>
+    <div class="fc"><h4>Pages</h4><ul class="fl"><li><a href="why-us.html">Why Choose Us</a></li><li><a href="courses.html">Courses</a></li><li><a href="classroom.html">Classroom</a></li><li><a href="index.html#roadmap">Career Roadmap</a></li><li><a href="index.html#location">Location</a></li></ul></div>
+    <div class="fc"><h4>Contact</h4><div class="fct"><a href="tel:9354661288">📞 9354661288</a><a href="https://wa.me/919354661288" target="_blank">💬 WhatsApp Us</a><a href="mailto:genaigurukul@gmail.com">✉️ genaigurukul@gmail.com</a><a href="https://genaigurukul.in" target="_blank">🌐 genaigurukul.in</a></div></div>
+  </div>
+  <div class="fbot"><span>© 2026 GenAI Gurukul. All rights reserved.</span><span>A 103, Samarth Bldg, Kandivali East, Mumbai 400101</span></div>
+</div></footer>
+
+<div class="sticky-cta">
+  <a href="tel:9354661288" class="btn btn-primary">📞 Call</a>
+  <a href="https://wa.me/919354661288" target="_blank" class="btn btn-wa">💬 WhatsApp</a>
+  <a href="courses.html" class="btn btn-outline">View Courses</a>
+</div>
+
+<script>
+  const nb=document.getElementById('navbar');
+  window.addEventListener('scroll',()=>nb.classList.toggle('scrolled',scrollY>20));
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+  function toggleNav(){document.getElementById('mnav').classList.toggle('open')}
+</script>
 </body>
 </html>
